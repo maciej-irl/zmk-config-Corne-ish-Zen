@@ -37,7 +37,7 @@
 		compatible = "zmk,keymap";
 
 		default_layer {
-			label = "QWERTY";
+			label = "BASE";
 // ,-----------------------------.   ,-----------------------------.
 // |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |
 // | ⎇ A | ⌃ S | ⇧ D | ⌘ F |  G  |   |  H  | ⌘ J | ⇧ K | ⌃ L | ⎇ ' |
@@ -64,7 +64,7 @@
 			bindings = <
 &trans		&kp N4		&kp N5		&kp N6		&kp UNDER	&trans		&trans		&trans		&trans		&trans
 &kp DOT		&kp N1		&kp N2		&kp N3		&kp G		&trans		&kp LCMD	&kp LSHIFT	&kp LCTRL	&kp LALT
-&kp LSFT	&trans		&trans		&trans		&trans		&trans		&trans		&trans 		&trans		&trans
+&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans 		&trans		&trans
 				&trans		&trans		&kp N0		&trans		&trans		&trans
 			>;
 		};
@@ -78,7 +78,7 @@
 // `-----------|     |     |     |   | XXX |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&trans		&kp UNDER	&kp LBRC	&kp RBRC	&kp ASTERISK	&kp DOLLAR	&kp PLUS	S&kp AMPS	&kp PIPE	&trans
+&trans		&kp UNDER	&kp LBRC	&kp RBRC	&kp ASTERISK	&kp DOLLAR	&kp PLUS	&kp AMPS	&kp PIPE	&trans
 &kp DQT		&kp COLON	&kp LPAR	&kp RPAR	&kp QMARK	&kp BACKSLASH	&kp MINUS	&kp EQUAL	&kp SEMI	&kp EXCL
 &kp GRAVE	&kp AT_SIGN	&kp LBKT	&kp RBKT	&kp HASH	&kp CARET	&kp LT		&kp TILDE	&kp GT		&kp PERCENT
 				&trans		&trans		&trans		&trans		&trans		&trans
