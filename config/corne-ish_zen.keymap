@@ -53,7 +53,7 @@
 			>;
 		};
 
-		lower_layer {
+		num_layer {
 			label = "NUMBER";
 // ,-----------------------------.   ,-----------------------------.
 // |     |  4  |  5  |  6  |  _  |   |     |     |     |     |     |
@@ -63,13 +63,13 @@
 //             `-----------------'   `-----------------'
 			bindings = <
 &trans		&kp N4		&kp N5		&kp N6		&kp UNDER	&trans		&trans		&trans		&trans		&trans
-&bt BT_CLR	&bt N1		&bt N2		&bt N3		&kp G		&trans		&kp LCMD	&kp LSHIFT	&kp LCTRL	&kp LALT
+&kp DOT		&kp N1		&kp N2		&kp N3		&kp G		&trans		&kp LCMD	&kp LSHIFT	&kp LCTRL	&kp LALT
 &kp LSFT	&trans		&trans		&trans		&trans		&trans		&trans		&trans 		&trans		&trans
 				&trans		&trans		&kp N0		&trans		&trans		&trans
 			>;
 		};
 
-		raise_layer {
+		sym_layer {
 			label = "SYMBOL";
 // ,-----------------------------.   ,-----------------------------.
 // |     |  _  |  {  |  }  |  *  |   |  $  |  +  |  &  |  |  |     |
