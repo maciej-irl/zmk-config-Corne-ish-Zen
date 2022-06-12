@@ -38,51 +38,55 @@
 
 		default_layer {
 			label = "QWERTY";
-// ------------------------------------------------------------------
-// |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |
-// |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |
-// |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
-//             | TAB | ESC | SPC |   | BSP | 1SFT | RET |
+// ,-----------------------------.   ,-----------------------------.
+// |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |
+// | ⎇ A | ⌃ S | ⇧ D | ⌘ F |  G  |   |  H  | ⌘ J | ⇧ K | ⌃ L | ⎇ ' |
+// |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |
+// `-----------| TAB | ESC | SPC |   | BSP | SFT | RET |-----------'
+//             |     | fun | nav |   | sym | num |     |
+//             `-----------------'   `-----------------'
 			bindings = <
 &kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp P
-&hm LALT A	&hm LCTRL S	&hm LSHIFT D	&hm LCMD F	&kp G		&kp H		&hm RCMD J	&hm RSHIFT K	&hm RCTRL L	&hm RALT SEMI
-&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH 
-				&kp TAB		&lt 1 ESC	&kp BSPC	&kp SPACE	&lst 2 LSHIFT	&kp RET
+&hm LALT A	&hm LCTRL S	&hm LSHIFT D	&hm LCMD F	&kp G		&kp H		&hm RCMD J	&hm RSHIFT K	&hm RCTRL L	&hm RALT SQT
+&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH
+				&kp TAB		&kp ESC		&kp SPACE	&lt 2 BSPC	&lst 1 LSHIFT	&kp RET
 			>;
 		};
 
 		lower_layer {
 			label = "NUMBER";
-// -----------------------------------------------------------------------------------------
-// |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |
-// |BTCLR| BT1 | BT2 | BT3 | BT4 |   | BT5 | LFT | DWN |  UP | RGT |
-// |     |     |     |     |     |   |     |     |     |     |     |
-//             | GUI |     | SPC |   | ENT |     | ALT |
+// ,-----------------------------.   ,-----------------------------.
+// |     |  4  |  5  |  6  |  _  |   |     |     |     |     |     |
+// |  .  |  1  |  2  |  3  |  G  |   |     |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |     |  7  |  8  |  9  |  #  |   |     |     |     |     |     |
+// `-----------|     |     |  0  |   |     | XXX |     |-----------'
+//             `-----------------'   `-----------------'
 			bindings = <
-&kp NUM_1    &kp NUM_2    &kp NUM_3    &kp NUM_4  &kp NUM_5          &kp NUM_6 &kp NUM_7 &kp NUM_8 &kp NUM_9 &kp NUM_0 
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4 &kp LARW  &kp DARW  &kp UARW  &kp RARW 
-&kp LSFT   &trans       &trans       &trans       &trans             &trans    &trans    &trans    &trans    &trans   
-						&kp LGUI     &trans       &kp RET            &kp SPC   &trans &kp RALT
+&trans		&kp N4		&kp N5		&kp N6		&kp UNDER	&trans		&trans		&trans		&trans		&trans
+&bt BT_CLR	&bt N1		&bt N2		&bt N3		&kp G		&trans		&kp LCMD	&kp LSHIFT	&kp LCTRL	&kp LALT
+&kp LSFT	&trans		&trans		&trans		&trans		&trans		&trans		&trans 		&trans		&trans
+				&trans		&trans		&kp N0		&trans		&trans		&trans
 			>;
 		};
 
 		raise_layer {
 			label = "SYMBOL";
-// -----------------------------------------------------------------------------------------
-// |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |
-// |     |     |     |     |     |   |  -  |  =  |  {  |  }  | "|" |
-// |     |     |     |     |     |   |  _  |  +  |  [  |  ]  |  \  | // TODO: Fix this row when &mkp is committed
-//             | GUI |     | SPC |   | ENT |     | ALT |
+// ,-----------------------------.   ,-----------------------------.
+// |     |  _  |  {  |  }  |  *  |   |  $  |  +  |  &  |  |  |     |
+// |  "  |  :  |  (  |  )  |  ?  |   |  \  |  -  |  =  |  ;  |  !  |
+// |  `  |  @  |  [  |  ]  |  #  |   |  ^  |  <  |  ~  |  >  |  %  |
+// `-----------|     |     |     |   | XXX |     |     |-----------'
+//             `-----------------'   `-----------------'
 			bindings = <
-&kp BANG  &kp ATSN  &kp HASH  &kp CURU  &kp PRCT    &kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
-&trans    &trans    &trans    &trans    &trans      &kp MINUS &kp EQL  &kp LBKT &kp RBKT &kp PIPE 
-&trans    &trans    &trans    &trans    &trans      &trans    &trans   &trans   &trans   &kp BSLH 
-						&kp LGUI &trans &kp RET     &kp SPC   &trans &kp RALT
+&trans		&kp UNDER	&kp LBRC	&kp RBRC	&kp ASTERISK	&kp DOLLAR	&kp PLUS	S&kp AMPS	&kp PIPE	&trans
+&kp DQT		&kp COLON	&kp LPAR	&kp RPAR	&kp QMARK	&kp BACKSLASH	&kp MINUS	&kp EQUAL	&kp SEMI	&kp EXCL
+&kp GRAVE	&kp AT_SIGN	&kp LBKT	&kp RBKT	&kp HASH	&kp CARET	&kp LT		&kp TILDE	&kp GT		&kp PERCENT
+				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
 		};
 	};
 
 	chosen {
-			zmk,matrix_transform = &five_column_transform;
+		zmk,matrix_transform = &five_column_transform;
 	};
 };
