@@ -114,7 +114,7 @@
 		};
 
 		//TODO: The mouse keys will go on the right hand side once zmk #778 is merged.
-		nav_layer {
+		fun_layer {
 			label = "FUN";
 // ,-----------------------------.   ,-----------------------------.
 // |     | F7  | F8  | F9  | F10 |   | BT3 | BT0 | BT1 | BT2 | BTC |
