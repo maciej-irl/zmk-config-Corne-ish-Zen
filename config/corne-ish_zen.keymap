@@ -82,7 +82,7 @@
 			label = "STICK_SHIFT_TAB";
 			#binding-cells = <0>;
 			bindings = <&tdshift>, <&kp TAB>;
-			mods = <(MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_RGUI|MOD_RSFT|MOD_RCTL|MOD_RALT)>;
+			mods = <(MOD_LGUI|MOD_LCTL|MOD_LALT|MOD_RGUI|MOD_RCTL|MOD_RALT)>;
 		};
 		tdshift: tdshift_caps {
 			compatible = "zmk,behavior-tap-dance";
