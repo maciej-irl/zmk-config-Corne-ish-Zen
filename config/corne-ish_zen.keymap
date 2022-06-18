@@ -42,7 +42,8 @@
 };
 
 &caps_word {
-	continue-list = <UNDERSCORE MINUS>;
+	// Wish I could add 'CLMK_SEMI' (qwerty P) to a 'stop-list'.
+	continue-list = <UNDERSCORE MINUS CLMK_O>;
 };
 
 / {
