@@ -27,8 +27,22 @@
 // `-----------|     |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 
+// Key Positions
+// ,-----------------------------.   ,-----------------------------.
+// |  0  |  1  |  2  |  3  |  4  |   |  5  |  6  |  7  |  8  |  9  |
+// | 10  | 11  | 12  | 13  | 14  |   | 15  | 16  | 17  | 18  | 19  |
+// | 20  | 21  | 22  | 23  | 24  |   | 25  | 26  | 27  | 28  | 29  |
+// `-----------| 30  | 31  | 32  |   | 33  | 34  | 35  |-----------'
+//             `-----------------'   `-----------------'
+
+// Needed to make sure sticky shift is 'quick release' - deactive when next key
+// is pressed instead of when a key is released.
 &sk {
-    quick-release;
+	quick-release;
+};
+
+&caps_word {
+	continue-list = <UNDERSCORE MINUS>;
 };
 
 / {
@@ -46,28 +60,35 @@
 			compatible = "zmk,behavior-hold-tap";
 			label = "THUMB_LT";
 			#binding-cells = <2>;
-			flavor = "balanced";
-			tapping-term-ms = <200>;
+			flavor = "tap-preferred";
+			tapping-term-ms = <150>;
 			bindings = <&mo>, <&kp>;
-			quick-tap-ms = <125>;
+			quick-tap-ms = <150>;
 		};
-		// Layer tap that's a one-shot shift with no modifiers and tab with some.
+		// Layer tap that's a sticky shift with no modifiers and tab with some.
 		// The second binding cell is ignored (but needed since #binding-cells needs to be 2)
 		magic: layer_tag_magic {
 			compatible = "zmk,behavior-hold-tap";
 			label = "LT_MAGIC";
 			#binding-cells = <2>;
-			flavor = "balanced";
-			tapping-term-ms = <200>;
+			flavor = "tap-preferred";
+			tapping-term-ms = <150>;
 			bindings = <&mo>, <&skstab>;
-			quick-tap-ms = <125>;
+			quick-tap-ms = <150>;
 		};
 		skstab: skshift_tab {
 			compatible = "zmk,behavior-mod-morph";
 			label = "STICK_SHIFT_TAB";
 			#binding-cells = <0>;
-			bindings = <&sk LSHIFT>, <&kp TAB>;
+			bindings = <&tdshift>, <&kp TAB>;
 			mods = <(MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_RGUI|MOD_RSFT|MOD_RCTL|MOD_RALT)>;
+		};
+		tdshift: tdshift_caps {
+			compatible = "zmk,behavior-tap-dance";
+			label = "SHIFT_TAP_DANCE";
+			#binding-cells = <0>;
+			tapping-term-ms = <150>;
+			bindings = <&sk LSHIFT>, <&caps_word>;
 		};
 	};
 
