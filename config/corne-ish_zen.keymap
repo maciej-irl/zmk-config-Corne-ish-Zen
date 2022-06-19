@@ -56,6 +56,14 @@
 			tapping-term-ms = <200>;
 			bindings = <&kp>, <&kp>;
 		};
+		hmx: homerow_mods_x {
+			compatible = "zmk,behavior-hold-tap";
+			label = "HOMEROW_MODS";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+			tapping-term-ms = <250>;
+			bindings = <&kp>, <&kp>;
+		};
 		// Stuff below this is for thumbs.
 		tt: thumb_layer_tap {
 			compatible = "zmk,behavior-hold-tap";
@@ -107,7 +115,7 @@
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp APOS
-&hm LALT A	&hm LCTRL S	&hm LSHIFT D	&hm LCMD F	&kp G		&kp H		&hm RCMD J	&hm RSHIFT K	&hm RCTRL L	&hm RALT CLMK_O
+&hm LALT A	&hmx LCTRL S	&hm LSHIFT D	&hm LCMD F	&kp G		&kp H		&hm RCMD J	&hm RSHIFT K	&hmx RCTRL L	&hm RALT CLMK_O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH
 				&kp TAB		&tt L_FUN ESC	&tt L_NAV SPACE	&tt L_SYM BSPC	&magic L_NUM 0	&kp RET
 			>;
