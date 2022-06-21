@@ -53,7 +53,7 @@
 			label = "HOMEROW_MODS";
 			#binding-cells = <2>;
 			flavor = "tap-preferred";
-			tapping-term-ms = <200>;
+			tapping-term-ms = <150>;
 			bindings = <&kp>, <&kp>;
 		};
 		hmx: homerow_mods_x {
@@ -83,7 +83,7 @@
 			flavor = "tap-preferred";
 			tapping-term-ms = <150>;
 			bindings = <&mo>, <&skstab>;
-			quick-tap-ms = <150>;
+			quick-tap-ms = <200>;
 		};
 		skstab: skshift_tab {
 			compatible = "zmk,behavior-mod-morph";
