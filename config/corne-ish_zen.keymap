@@ -9,16 +9,23 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+// Useful for vim.
 #define CLMK_G T
 #define CLMK_O SEMICOLON
 #define CLMK_SEMI P
 #define CLMK_COLON LS(P)
+// Sticky-hold key.
+#define SHK(keycode) &shk keycode keycode 
 
 #define L_BASE 0
-#define L_NUM 1
-#define L_SYM 2
-#define L_NAV 3
+#define L_SYM 1
+#define L_NAV 2
+#define L_NUM 3
 #define L_FUN 4
+
+// I can't find some keys?
+// * Tab is on the nav layer.
+// * Backspace is on
 
 // ,-----------------------------.   ,-----------------------------.
 // |     |     |     |     |     |   |     |     |     |     |     |
@@ -41,63 +48,37 @@
 	quick-release;
 };
 
-&caps_word {
-	// Wish I could add 'CLMK_SEMI' (qwerty P) to a 'stop-list'.
-	continue-list = <UNDERSCORE MINUS CLMK_O>;
-};
-
 / {
+	conditional_layers {
+		compatible = "zmk,conditional-layers";
+		tri_layer {
+			if-layers = <L_SYM L_NAV>;
+			then-layer = <L_NUM>;
+		};
+	};
+
 	behaviors {
-		hm: homerow_mods {
+		shk: sticky_hold_key {
 			compatible = "zmk,behavior-hold-tap";
-			label = "HOMEROW_MODS";
+			label = "sticky-hold key";
 			#binding-cells = <2>;
+			tapping_term_ms = <200>;
 			flavor = "tap-preferred";
-			tapping-term-ms = <150>;
-			bindings = <&kp>, <&kp>;
+			bindings = <&kp>, <&sk>;
 		};
-		hmx: homerow_mods_x {
-			compatible = "zmk,behavior-hold-tap";
-			label = "HOMEROW_MODS";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
-			tapping-term-ms = <250>;
-			bindings = <&kp>, <&kp>;
-		};
-		// Stuff below this is for thumbs.
-		tt: thumb_layer_tap {
-			compatible = "zmk,behavior-hold-tap";
-			label = "THUMB_LT";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
-			tapping-term-ms = <150>;
-			bindings = <&mo>, <&kp>;
-			quick-tap-ms = <150>;
-		};
-		// Layer tap that's a sticky shift with no modifiers and tab with some.
-		// The second binding cell is ignored (but needed since #binding-cells needs to be 2)
-		magic: layer_tag_magic {
-			compatible = "zmk,behavior-hold-tap";
-			label = "LT_MAGIC";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
-			tapping-term-ms = <150>;
-			bindings = <&mo>, <&skstab>;
-			quick-tap-ms = <200>;
-		};
-		skstab: skshift_tab {
+		mm_comma: mm_comma_lpar {
 			compatible = "zmk,behavior-mod-morph";
-			label = "STICK_SHIFT_TAB";
+			label = "GRAVE_ESCAPE";
 			#binding-cells = <0>;
-			bindings = <&tdshift>, <&kp TAB>;
-			mods = <(MOD_LGUI|MOD_LCTL|MOD_LALT|MOD_RGUI|MOD_RCTL|MOD_RALT)>;
+			bindings = <&kp COMMA>, <&kp LEFT_PARENTHESIS>;
+			mods = <MOD_LSFT>;
 		};
-		tdshift: tdshift_caps {
-			compatible = "zmk,behavior-tap-dance";
-			label = "SHIFT_TAP_DANCE";
+		mm_dot: mm_dot_rpar {
+			compatible = "zmk,behavior-mod-morph";
+			label = "GRAVE_ESCAPE";
 			#binding-cells = <0>;
-			tapping-term-ms = <150>;
-			bindings = <&sk LSHIFT>, <&caps_word>;
+			bindings = <&kp DOT>, <&kp RIGHT_PARENTHESIS>;
+			mods = <MOD_LSFT>;
 		};
 	};
 
@@ -108,48 +89,31 @@
 			label = "BASE";
 // ,-----------------------------.   ,-----------------------------.
 // |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  '  |
-// | ⎇ A | ⌃ S | ⇧ D | ⌘ F |  G  |   |  H  | ⌘ J | ⇧ K | ⌃ L | ⎇ ; |
-// |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |
-// `-----------| TAB | ESC | SPC |   | BSP | SFT | RET |-----------'
-//             |     | fun | nav |   | sym | num |     |
+// |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |
+// |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  | , ( | . ) |  /  |
+// `-----------| TAB | nav | SPC |   | SFT | sym | RET |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp APOS
-&hm LALT A	&hmx LCTRL S	&hm LSHIFT D	&hm LCMD F	&kp G		&kp H		&hm RCMD J	&hm RSHIFT K	&hmx RCTRL L	&hm RALT CLMK_O
-&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH
-				&kp TAB		&tt L_FUN ESC	&tt L_NAV SPACE	&tt L_SYM BSPC	&magic L_NUM 0	&kp RET
-			>;
-		};
-
-		num_layer {
-			label = "NUM";
-// ,-----------------------------.   ,-----------------------------.
-// |     |  4  |  5  |  6  |  _  |   |     |     |     |     |     |
-// |  .  |  1  |  2  |  3  |  G  |   |     |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |     |  7  |  8  |  9  |  #  |   |     |     |     |     |     |
-// `-----------|     |     |  0  |   |     | XXX |     |-----------'
-//             `-----------------'   `-----------------'
-			bindings = <
-&none		&kp N4		&kp N5		&kp N6		&kp UNDER	&none		&none		&none		&none		&none
-&kp DOT		&kp N1		&kp N2		&kp N3		&kp LS(CLMK_G)	&none		&kp LCMD	&kp LSHIFT	&kp LCTRL	&kp LALT
-&none		&kp N7		&kp N8		&kp N9		&kp HASH	&none		&none		&none 		&none		&none
-				&trans		&trans		&kp N0		&trans		&trans		&trans
+&kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
+&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&mm_comma	&mm_dot		&kp FSLH
+				&kp TAB		&mo L_NAV	&kp SPACE	SHK(LSHIFT)	&mo L_SYM 	&kp RET
 			>;
 		};
 
 		sym_layer {
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
-// |     |  _  |  {  |  }  |  *  |   |  $  |  +  |  &  |  |  |     |
-// |  "  |  :  |  (  |  )  |  ?  |   |  \  |  -  |  =  |  ;  |  !  |
-// |  `  |  @  |  [  |  ]  |  #  |   |  ^  |  <  |  ~  |  >  |  %  |
-// `-----------|     |     |     |   | XXX |     |     |-----------'
+// |     |  _  |  ;  |  !  |  *  |   |  $  |  +  |  &  |  |  |     |
+// |  "  |  :  |  (  |  )  |  ?  |   |  \  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |  `  |  @  |  -  |  ~  |  #  |   |  ^  |  <  |  =  |  >  |  %  |
+// `-----------|     |     | BSP |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&none		&kp UNDER	&kp LBRC	&kp RBRC	&kp ASTERISK	&kp DOLLAR	&kp PLUS	&kp AMPS	&kp PIPE	&none
-&kp DQT		&kp CLMK_COLON	&kp LPAR	&kp RPAR	&kp QMARK	&kp BACKSLASH	&kp MINUS	&kp EQUAL	&kp CLMK_SEMI	&kp EXCL
-&kp GRAVE	&kp AT_SIGN	&kp LBKT	&kp RBKT	&kp HASH	&kp CARET	&kp LT		&kp TILDE	&kp GT		&kp PERCENT
-				&trans		&trans		&trans		&trans		&trans		&trans
+&none		&kp LT		&kp EQUAL	&kp GT		&kp HASH	&kp CARET	&kp LBKT	&kp GRAVE	&kp RBKT	&none
+&kp UNDER	&kp MINUS	&kp SEMI	&kp CLMK_COLON	&kp EXCL	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
+&kp TILDE	&kp LBRC	&kp UNDER	&kp RBRC	&kp ASTERISK	&kp PERCENT	&kp AMPERSAND	&kp GRAVE	&kp PIPE	&kp BACKSLASH
+				&trans		&trans		&kp BSPC	&trans		&trans		&trans
 			>;
 		};
 
@@ -160,28 +124,47 @@
 // | LCK | LFT |     | RGH | VUP |   |     | BCK | FWD |     |     |
 // |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |     | LFT | DWN | UP  | RGH |
 // |     | PRV | PLY | NXT | MUT |   |     |     |     |     |     |
-// `-----------|     |     | XXX |   |     |     |     |-----------'
+// `-----------|     | XXX |     |   | ESC |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp LG(LC(Q))	&kp LEFT	&none		&kp RIGHT	&kp C_VOL_UP	&none		&kp LG(LBKT)	&kp LG(RBKT)	&none		&none
-&kp LALT	&kp LCTRL	&kp LSHIFT	&kp LCMD	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
+SHK(LALT)	SHK(LCTRL)	SHK(LSHIFT)	SHK(LCMD)	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
 &none		&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_MUTE	&none		&none		&none		&none		&none
+				&trans		&trans		&trans		&kp ESC		&trans		&trans
+			>;
+		};
+
+		// Since num is a conditional layer it needs to have a higher index than nav and sym.
+		num_layer {
+			label = "NUM";
+// ,-----------------------------.   ,-----------------------------.
+// |     |  4  |  5  |  6  |     |   | BT0 | BT1 | BT2 | BT3 | BT4 |
+// |  0  |  1  |  2  |  3  |     |   | BTC |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |     |  7  |  8  |  9  |     |   |     |     |     |     |     |
+// `-----------|     | XXX |     |   |     | XXX |     |-----------'
+//             `-----------------'   `-----------------'
+			bindings = <
+&none		&kp N4		&kp N5		&kp N6		&none		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
+&kp N0		&kp N1		&kp N2		&kp N3		&none		&bt BT_CLR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
+&none		&kp N7		&kp N8		&kp N9		&none		&none		&none		&none 		&none		&none
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
 		};
 
+
 		//TODO: The mouse keys will go on the right hand side once zmk #778 is merged.
+		//TODO: How should this layer be activated?
 		fun_layer {
 			label = "FUN";
 // ,-----------------------------.   ,-----------------------------.
-// |     | F7  | F8  | F9  | F10 |   | BT3 | BT0 | BT1 | BT2 | BTC |
-// |     | F4  | F5  | F6  | F11 |   | BT4 | ML  | MD  | MU  | MR  |
-// |     | F1  | F2  | F3  | F12 |   |     | MWL | MWD | MWU | MWR |
-// `-----------|     | XXX |     |   |     |     |     |-----------'
+// |     | F7  | F8  | F9  | F10 |   |     |     |     |     |     |
+// |     | F4  | F5  | F6  | F11 |   |     |     |     |     |     |
+// |     | F1  | F2  | F3  | F12 |   |     |     |     |     |     |
+// `-----------|     |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&none		&kp F7		&kp F8		&kp F9		&kp F10		&bt BT_SEL 3	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_CLR
-&none		&kp F4		&kp F5		&kp F6		&kp F11		&bt BT_SEL 4	&none		&none		&none		&none
+&none		&kp F7		&kp F8		&kp F9		&kp F10		&none		&none		&none		&none		&none
+&none		&kp F4		&kp F5		&kp F6		&kp F11		&none		&none		&none		&none		&none
 &none		&kp F1		&kp F2		&kp F3		&kp F12		&none		&none		&none		&none		&none
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
