@@ -111,7 +111,7 @@
 //             `-----------------'   `-----------------'
 			bindings = <
 &none		&kp LT		&kp EQUAL	&kp GT		&kp HASH	&kp CARET	&kp LBKT	&kp GRAVE	&kp RBKT	&none
-&kp UNDER	&kp MINUS	&kp SEMI	&kp CLMK_COLON	&kp EXCL	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
+&kp UNDER	&kp MINUS	&kp CLMK_SEMI	&kp CLMK_COLON	&kp EXCL	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
 &kp TILDE	&kp LBRC	&kp UNDER	&kp RBRC	&kp ASTERISK	&kp PERCENT	&kp AMPERSAND	&kp GRAVE	&kp PIPE	&kp BACKSLASH
 				&trans		&trans		&kp BSPC	&trans		&trans		&trans
 			>;
