@@ -52,13 +52,19 @@
 	};
 
 	behaviors {
-		shk: sticky_hold_key {
-			compatible = "zmk,behavior-hold-tap";
-			label = "STICKY_HOLD";
-			#binding-cells = <2>;
-			tapping_term_ms = <300>;
-			flavor = "tap-preferred";
-			bindings = <&kp>, <&sk>;
+		mm_comma: mm_comma_lpar {
+			compatible = "zmk,behavior-mod-morph";
+			label = "MM_COMMA";
+			#binding-cells = <0>;
+			bindings = <&kp COMMA>, <&kp LEFT_PARENTHESIS>;
+			mods = <MOD_LSFT>;
+		};
+		mm_dot: mm_dot_rpar {
+			compatible = "zmk,behavior-mod-morph";
+			label = "MM_DOT";
+			#binding-cells = <0>;
+			bindings = <&kp DOT>, <&kp RIGHT_PARENTHESIS>;
+			mods = <MOD_LSFT>;
 		};
 		skq: sticky_key_quick_release {
 			compatible = "zmk,behavior-sticky-key";
