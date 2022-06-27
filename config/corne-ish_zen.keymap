@@ -42,10 +42,10 @@
 // `-----------| 30  | 31  | 32  |   | 33  | 34  | 35  |-----------'
 //             `-----------------'   `-----------------'
 
-// Needed to make sure sticky shift is 'quick release' - deactive when next key
-// is pressed instead of when a key is released.
+// See https://zmk.dev/docs/behaviors/sticky-key#ignore-modifiers
 &sk {
 	quick-release;
+	release-after-ms = <2000>;
 };
 
 / {
@@ -62,7 +62,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			label = "sticky-hold key";
 			#binding-cells = <2>;
-			tapping_term_ms = <150>;
+			tapping_term_ms = <300>;
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&sk>;
 		};
