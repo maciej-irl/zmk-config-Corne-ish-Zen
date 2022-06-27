@@ -42,12 +42,6 @@
 // `-----------| 30  | 31  | 32  |   | 33  | 34  | 35  |-----------'
 //             `-----------------'   `-----------------'
 
-// See https://zmk.dev/docs/behaviors/sticky-key#ignore-modifiers
-&sk {
-	quick-release;
-	release-after-ms = <1000>;
-};
-
 / {
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
@@ -60,10 +54,10 @@
 	behaviors {
 		shk: sticky_hold_key {
 			compatible = "zmk,behavior-hold-tap";
-			label = "sticky-hold key";
+			label = "STICKY_HOLD";
 			#binding-cells = <2>;
 			tapping_term_ms = <200>;
-			flavor = "balanced";
+			flavor = "tap-preferred";
 			bindings = <&kp>, <&sk>;
 		};
 		mm_comma: mm_comma_lpar {
