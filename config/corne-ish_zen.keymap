@@ -45,7 +45,7 @@
 // See https://zmk.dev/docs/behaviors/sticky-key#ignore-modifiers
 &sk {
 	quick-release;
-	release-after-ms = <2000>;
+	release-after-ms = <1000>;
 };
 
 / {
@@ -62,7 +62,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			label = "sticky-hold key";
 			#binding-cells = <2>;
-			tapping_term_ms = <300>;
+			tapping_term_ms = <150>;
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&sk>;
 		};
