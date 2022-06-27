@@ -45,6 +45,7 @@
 // See https://zmk.dev/docs/behaviors/sticky-key#ignore-modifiers
 &sk {
 	release-after-ms = <6000>;
+	quick-release;
 };
 
 / {
