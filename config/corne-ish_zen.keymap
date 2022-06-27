@@ -61,7 +61,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			label = "STICKY_HOLD";
 			#binding-cells = <2>;
-			tapping_term_ms = <200>;
+			tapping_term_ms = <300>;
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&sk>;
 		};
