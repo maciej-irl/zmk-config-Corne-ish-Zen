@@ -42,6 +42,11 @@
 // `-----------| 30  | 31  | 32  |   | 33  | 34  | 35  |-----------'
 //             `-----------------'   `-----------------'
 
+// See https://zmk.dev/docs/behaviors/sticky-key#ignore-modifiers
+&sk {
+	release-after-ms = <6000>;
+};
+
 / {
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
