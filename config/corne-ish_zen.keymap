@@ -15,7 +15,7 @@
 #define CLMK_SEMI P
 #define CLMK_COLON LS(P)
 // Sticky-hold key.
-#define SHK(keycode) &shk keycode keycode 
+#define SHK(keycode) &sk keycode
 
 #define L_BASE 0
 #define L_SYM 1
@@ -42,12 +42,6 @@
 // `-----------| 30  | 31  | 32  |   | 33  | 34  | 35  |-----------'
 //             `-----------------'   `-----------------'
 
-// See https://zmk.dev/docs/behaviors/sticky-key#ignore-modifiers
-&sk {
-	release-after-ms = <6000>;
-	quick-release;
-};
-
 / {
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
@@ -66,19 +60,13 @@
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&sk>;
 		};
-		mm_comma: mm_comma_lpar {
-			compatible = "zmk,behavior-mod-morph";
-			label = "MM_COMMA";
-			#binding-cells = <0>;
-			bindings = <&kp COMMA>, <&kp LEFT_PARENTHESIS>;
-			mods = <MOD_LSFT>;
-		};
-		mm_dot: mm_dot_rpar {
-			compatible = "zmk,behavior-mod-morph";
-			label = "MM_DOT";
-			#binding-cells = <0>;
-			bindings = <&kp DOT>, <&kp RIGHT_PARENTHESIS>;
-			mods = <MOD_LSFT>;
+		skq: sticky_key_quick_release {
+			compatible = "zmk,behavior-sticky-key";
+			label = "STICKY_KEY_QUICK_RELEASE";
+			#binding-cells = <1>;
+			bindings = <&kp>;
+			release-after-ms = <1000>;
+			quick-release;
 		};
 	};
 
@@ -97,7 +85,7 @@
 &kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp APOS
 &kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&mm_comma	&mm_dot		&kp FSLH
-				&kp TAB		&mo L_NAV	&kp SPACE	SHK(LSHIFT)	&mo L_SYM 	&kp RET
+				&kp TAB		&mo L_NAV	&kp SPACE	&skq LSHIFT	&mo L_SYM 	&kp RET
 			>;
 		};
 
