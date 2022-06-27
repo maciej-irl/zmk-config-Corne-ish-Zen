@@ -68,14 +68,14 @@
 		};
 		mm_comma: mm_comma_lpar {
 			compatible = "zmk,behavior-mod-morph";
-			label = "GRAVE_ESCAPE";
+			label = "MM_COMMA";
 			#binding-cells = <0>;
 			bindings = <&kp COMMA>, <&kp LEFT_PARENTHESIS>;
 			mods = <MOD_LSFT>;
 		};
 		mm_dot: mm_dot_rpar {
 			compatible = "zmk,behavior-mod-morph";
-			label = "GRAVE_ESCAPE";
+			label = "MM_DOT";
 			#binding-cells = <0>;
 			bindings = <&kp DOT>, <&kp RIGHT_PARENTHESIS>;
 			mods = <MOD_LSFT>;
