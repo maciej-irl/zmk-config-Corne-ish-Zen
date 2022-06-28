@@ -47,7 +47,7 @@
 		compatible = "zmk,conditional-layers";
 		tri_layer {
 			if-layers = <L_SYM L_NAV>;
-			then-layer = <L_NUM>;
+			then-layer = <L_FUN>;
 		};
 	};
 
@@ -74,6 +74,15 @@
 			release-after-ms = <1000>;
 			quick-release;
 		};
+		ltt: layer_tap_thumb {
+			compatible = "zmk,behavior-hold-tap";
+			label = "LAYER_TAP_THUMB";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+			tapping-term-ms = <200>;
+			quick-tap-ms = <125>;
+			bindings = <&mo>, <&kp>;
+		};
 	};
 
 	keymap {
@@ -85,28 +94,28 @@
 // |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  '  |
 // |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |
 // |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  | , ( | . ) |  /  |
-// `-----------| TAB | nav | SPC |   | SFT | sym | RET |-----------'
+// `-----------| TAB | num | ... |   | SFT | sym | RET |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp APOS
 &kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&mm_comma	&mm_dot		&kp FSLH
-				&kp TAB		&mo L_NAV	&kp SPACE	&skq LSHIFT	&mo L_SYM 	&kp RET
+				&kp TAB		&mo L_NUM	&ltt L_NAV SPACE &skq LSHIFT	&mo L_SYM 	&kp RET
 			>;
 		};
 
 		sym_layer {
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
-// |     |  _  |  ;  |  !  |  *  |   |  $  |  +  |  &  |  |  |     |
-// |  "  |  :  |  (  |  )  |  ?  |   |  \  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |  `  |  @  |  -  |  ~  |  #  |   |  ^  |  <  |  =  |  >  |  %  |
+// |     |  <  |  =  |  >  |  #  |   |  ^  |  [  |  !  |  ]  |     |
+// |  _  |  -  |  ;  |  :  |  @  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |  ~  |  {  |  _  |  }  |  *  |   |  %  |  `  |  &  |  |  |  \  |
 // `-----------|     |     | BSP |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&none		&kp LT		&kp EQUAL	&kp GT		&kp HASH	&kp CARET	&kp LBKT	&kp GRAVE	&kp RBKT	&none
-&kp UNDER	&kp MINUS	&kp CLMK_SEMI	&kp CLMK_COLON	&kp EXCL	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
-&kp TILDE	&kp LBRC	&kp UNDER	&kp RBRC	&kp ASTERISK	&kp PERCENT	&kp AMPERSAND	&kp GRAVE	&kp PIPE	&kp BACKSLASH
+&none		&kp LT		&kp EQUAL	&kp GT		&kp HASH	&kp CARET	&kp LBKT	&kp EXCL	&kp RBKT	&none
+&kp UNDER	&kp MINUS	&kp CLMK_SEMI	&kp CLMK_COLON	&kp AT_SIGN	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
+&kp TILDE	&kp LBRC	&kp UNDER	&kp RBRC	&kp ASTERISK	&kp PERCENT	&kp GRAVE	&kp AMPERSAND	&kp PIPE	&kp BACKSLASH
 				&trans		&trans		&kp BSPC	&trans		&trans		&trans
 			>;
 		};
@@ -115,46 +124,45 @@
 		nav_layer {
 			label = "NAV";
 // ,-----------------------------.   ,-----------------------------.
-// | LCK | LFT |     | RGH | VUP |   |     | BCK | FWD |     |     |
+// | LCK |     |     |     | VUP |   |     | BCK | FWD |     |     |
 // |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |     | LFT | DWN | UP  | RGH |
 // |     | PRV | PLY | NXT | MUT |   |     |     |     |     |     |
-// `-----------|     | XXX |     |   | ESC |     |     |-----------'
+// `-----------|     |     | XXX |   | ESC |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp LG(LC(Q))	&kp LEFT	&none		&kp RIGHT	&kp C_VOL_UP	&none		&kp LG(LBKT)	&kp LG(RBKT)	&none		&none
+&kp LG(LC(Q))	&none		&none		&none		&kp C_VOL_UP	&none		&kp LG(LBKT)	&kp LG(RBKT)	&none		&none
 SHK(LALT)	SHK(LCTRL)	SHK(LSHIFT)	SHK(LCMD)	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
 &none		&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_MUTE	&none		&none		&none		&none		&none
 				&trans		&trans		&trans		&kp ESC		&trans		&trans
 			>;
 		};
 
-		// Since num is a conditional layer it needs to have a higher index than nav and sym.
 		num_layer {
 			label = "NUM";
 // ,-----------------------------.   ,-----------------------------.
-// |     |  4  |  5  |  6  |     |   | BT0 | BT1 | BT2 | BT3 | BT4 |
-// |  0  |  1  |  2  |  3  |     |   | BTC |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |     |  7  |  8  |  9  |     |   |     |     |     |     |     |
-// `-----------|     | XXX |     |   |     | XXX |     |-----------'
+// | BT0 | BT1 | BT2 | BT3 | BT4 |   |     |  4  |  5  |  6  |     |
+// |  ⎇  |  ⌃  |  ⇧  |  ⌘  |     |   |     |  1  |  2  |  3  |     |
+// |     |     |     |     | BTC |   |     |  7  |  8  |  9  |     |
+// `-----------|     | XXX |     |   |  0  |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&none		&kp N4		&kp N5		&kp N6		&none		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
-&kp N0		&kp N1		&kp N2		&kp N3		&none		&bt BT_CLR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
-&none		&kp N7		&kp N8		&kp N9		&none		&none		&none		&none 		&none		&none
-				&trans		&trans		&trans		&trans		&trans		&trans
+&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&none		&kp N4		&kp N5		&bt N6		&none
+SHK(LALT)	SHK(LCTRL)	SHK(LSHIFT)	SHK(LCMD)	&none		&none		&kp N1		&kp N2		&kp N3		&none
+&none		&none		&none		&none		&bt BT_CLR	&none		&kp N7		&kp N8		&kp N9		&none
+				&trans		&trans		&trans		&kp N0		&trans		&trans
 			>;
 		};
 
 
+		// Since FUN is a conditional layer it needs to have a higher index than NAV and SYM.
 		//TODO: The mouse keys will go on the right hand side once zmk #778 is merged.
-		//TODO: How should this layer be activated?
 		fun_layer {
 			label = "FUN";
 // ,-----------------------------.   ,-----------------------------.
 // |     | F7  | F8  | F9  | F10 |   |     |     |     |     |     |
 // |     | F4  | F5  | F6  | F11 |   |     |     |     |     |     |
 // |     | F1  | F2  | F3  | F12 |   |     |     |     |     |     |
-// `-----------|     |     |     |   |     |     |     |-----------'
+// `-----------|     | XXX |     |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &none		&kp F7		&kp F8		&kp F9		&kp F10		&none		&none		&none		&none		&none
