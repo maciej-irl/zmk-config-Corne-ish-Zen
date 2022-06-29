@@ -131,13 +131,13 @@
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
 // |     |  <  |  =  |  >  |  #  |   |  ^  |  [  |  !  |  ]  |     |
-// |  _  |  -  |  ;  |  :  |  @  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |  +  |  -  |  ;  |  :  |  @  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
 // |  ~  |  {  |  _  |  }  |  *  |   |  %  |  `  |  &  |  |  |  \  |
 // `-----------|     |     | BSP |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &none		&kp LT		&kp EQUAL	&kp GT		&kp HASH	&kp CARET	&kp LBKT	&kp EXCL	&kp RBKT	&none
-&kp UNDER	&kp MINUS	&kp CLMK_SEMI	&kp CLMK_COLON	&kp AT_SIGN	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
+&kp PLUS	&kp MINUS	&kp CLMK_SEMI	&kp CLMK_COLON	&kp AT_SIGN	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
 &kp TILDE	&kp LBRC	&kp UNDER	&kp RBRC	&kp ASTERISK	&kp PERCENT	&kp GRAVE	&kp AMPERSAND	&kp PIPE	&kp BACKSLASH
 				&trans		&trans		&kp BSPC	&trans		&trans		&trans
 			>;
