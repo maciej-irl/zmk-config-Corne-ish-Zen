@@ -57,11 +57,13 @@
 			timeout-ms = <50>;
 			key-positions = <12 13>;
 			bindings = <&kp ESC>;
+			layers = <L_BASE>;
 		};
 		combo_backspace {
 			timeout-ms = <50>;
 			key-positions = <16 17>;
 			bindings = <&kp BACKSPACE>;
+			layers = <L_BASE>;
 		};
 	};
 
@@ -93,7 +95,7 @@
 			label = "LAYER_TAP_THUMB";
 			#binding-cells = <2>;
 			flavor = "tap-preferred";
-			tapping-term-ms = <200>;
+			tapping-term-ms = <250>;
 			quick-tap-ms = <125>;
 			bindings = <&mo>, <&kp>;
 		};
