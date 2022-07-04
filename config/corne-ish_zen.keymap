@@ -56,19 +56,19 @@
 			timeout-ms = <30>;
 			key-positions = <12 13>;
 			bindings = <&kp ESC>;
-			layers = <L_BASE>;
+			layers = <L_BASE L_CLMK>;
 		};
 		combo_backspace {
 			timeout-ms = <30>;
 			key-positions = <16 17>;
 			bindings = <&kp BACKSPACE>;
-			layers = <L_BASE L_NUM>;
+			layers = <L_BASE L_CLMK L_NUM>;
 		};
 		combo_backspace_alt {
 			timeout-ms = <30>;
 			key-positions = <16 17 18>;
 			bindings = <&kp LA(BACKSPACE)>;
-			layers = <L_BASE L_NUM>;
+			layers = <L_BASE L_CLMK L_NUM>;
 		};
 	};
 
