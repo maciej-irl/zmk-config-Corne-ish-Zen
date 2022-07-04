@@ -14,8 +14,6 @@
 #define CLMK_O SEMICOLON
 #define CLMK_SEMI P
 #define CLMK_COLON LS(P)
-// Sticky-hold key.
-#define SHK(keycode) &sk keycode
 
 #define L_BASE 0
 #define L_SYM 1
@@ -116,7 +114,7 @@
 			bindings = <
 &kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp APOS
 &kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
-&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH
+&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp SLASH
 				&kp TAB		&num_under	&ltt L_NAV SPACE &skq LSHIFT	&mo L_SYM 	&kp RET
 			>;
 		};
@@ -131,7 +129,7 @@
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_SEMI	&kp CLMK_COLON	&kp UNDERSCORE
-&kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp AT_SIGN	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
+&kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp AT_SIGN	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
 &kp EXCL	&kp BACKSLASH	&kp LBKT	&kp RBKT	&kp GRAVE	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
 				&trans		&trans		&kp SPACE	&trans		&trans		&trans
 			>;
@@ -149,7 +147,7 @@
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp LG(LC(Q))	&none		&none		&none		&kp C_VOL_UP	&none		&kp LG(LBKT)	&kp LG(RBKT)	&none		&none
-SHK(LALT)	SHK(LCTRL)	SHK(LSHIFT)	SHK(LCMD)	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
+&sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
 &none		&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_MUTE	&none		&kp HOME	&kp PAGE_DOWN	&kp PAGE_UP	&kp END
 				&trans		&trans		&trans		&kp TAB		&trans		&trans
 			>;
@@ -165,7 +163,7 @@ SHK(LALT)	SHK(LCTRL)	SHK(LSHIFT)	SHK(LCMD)	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN
 //             `-----------------'   `-----------------'
 			bindings = <
 &bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&none		&kp N4		&kp N5		&kp N6		&none
-SHK(LALT)	SHK(LCTRL)	SHK(LSHIFT)	SHK(LCMD)	&none		&none		&kp N1		&kp N2		&kp N3		&kp ESC
+&sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&none		&none		&kp N1		&kp N2		&kp N3		&kp ESC
 &none		&none		&none		&none		&bt BT_CLR	&none		&kp N7		&kp N8		&kp N9		&none
 				&trans		&trans		&trans		&kp N0		&trans		&trans
 			>;
