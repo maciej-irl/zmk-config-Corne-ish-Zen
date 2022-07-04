@@ -124,16 +124,16 @@
 		sym_layer {
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
-// |     |  <  |  =  |  >  |  #  |   |  ^  |  [  |  !  |  ]  |     |
-// |  +  |  -  |  ;  |  :  |  @  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |  ~  |  {  |  _  |  }  |  *  |   |  %  |  `  |  &  |  |  |  \  |
-// `-----------|     |     | BSP |   |     | XXX |     |-----------'
+// |  +  |  @  |  {  |  }  |  #  |   |  ^  |  &  |  ;  |  :  |  _  |
+// |  -  |  =  |  (  |  )  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |  !  |  \  |  [  |  ]  |  `  |   |  %  |  |  |  <  |  >  |  ~  |
+// `-----------|     |     | SPC |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&none		&kp LT		&kp EQUAL	&kp GT		&kp HASH	&kp CARET	&kp LBKT	&kp EXCL	&kp RBKT	&none
-&kp PLUS	&kp MINUS	&kp CLMK_SEMI	&kp CLMK_COLON	&kp AT_SIGN	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
-&kp TILDE	&kp LBRC	&kp UNDER	&kp RBRC	&kp ASTERISK	&kp PERCENT	&kp GRAVE	&kp AMPERSAND	&kp PIPE	&kp BACKSLASH
-				&trans		&trans		&kp BSPC	&trans		&trans		&trans
+&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp SEMICOLON	&kp COLON	&kp UNDERSCORE
+&kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp AT_SIGN	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
+&kp EXCL	&kp BACKSLASH	&kp LBKT	&kp RBKT	&kp GRAVE	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
+				&trans		&trans		&kp SPACE	&trans		&trans		&trans
 			>;
 		};
 
