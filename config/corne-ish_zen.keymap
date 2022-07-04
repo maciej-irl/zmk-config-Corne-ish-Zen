@@ -16,10 +16,11 @@
 #define CLMK_COLON LS(P)
 
 #define L_BASE 0
-#define L_SYM 1
-#define L_NAV 2
-#define L_NUM 3
-#define L_FUN 4
+#define L_CLMK 1
+#define L_SYM 2
+#define L_NAV 3
+#define L_NUM 4
+#define L_FUN 5
 
 // I can't find some keys?
 // * Tab is on the nav layer.
@@ -119,6 +120,24 @@
 			>;
 		};
 
+		// Same as above but hard-coded Colemak.
+		// Note right now there is no way to type : and ;
+		default_layer {
+			label = "CLMK";
+// ,-----------------------------.   ,-----------------------------.
+// |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  '  |
+// |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  |
+// |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  |
+// `-----------| TAB | -1- | -2- |   | SFT | sym | RET |-----------'
+//             `-----------------'   `-----------------'
+			bindings = <
+&kp Q		&kp W		&kp F		&kp P		&kp G		&kp J		&kp L		&kp U		&kp Y		&kp APOS
+&kp A		&kp R		&kp S		&kp T		&kp D		&kp H		&kp N		&kp E		&kp I		&kp O
+&kp Z		&kp X		&kp C		&kp V		&kp B		&kp K		&kp M		&kp COMMA	&kp DOT		&kp SLASH
+				&kp TAB		&num_under	&ltt L_NAV SPACE &skq LSHIFT	&mo L_SYM 	&kp RET
+			>;
+		};
+
 		sym_layer {
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
@@ -142,13 +161,13 @@
 // ,-----------------------------.   ,-----------------------------.
 // | LCK |     |     |     | VUP |   |     | BCK | FWD |     |     |
 // |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |     | LFT | DWN | UP  | RGH |
-// |     | PRV | PLY | NXT | MUT |   |     | HME | PDN | PUP | END |
+// | COL | PRV | PLY | NXT | MUT |   |     | HME | PDN | PUP | END |
 // `-----------|     |     | XXX |   | TAB |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp LG(LC(Q))	&none		&none		&none		&kp C_VOL_UP	&none		&kp LG(LBKT)	&kp LG(RBKT)	&none		&none
 &sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
-&none		&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_MUTE	&none		&kp HOME	&kp PAGE_DOWN	&kp PAGE_UP	&kp END
+&tog L_CLMK	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_MUTE	&none		&kp HOME	&kp PAGE_DOWN	&kp PAGE_UP	&kp END
 				&trans		&trans		&trans		&kp TAB		&trans		&trans
 			>;
 		};
