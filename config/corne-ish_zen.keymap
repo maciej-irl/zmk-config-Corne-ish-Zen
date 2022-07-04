@@ -65,6 +65,12 @@
 			bindings = <&kp BACKSPACE>;
 			layers = <L_BASE L_NUM>;
 		};
+		combo_backspace_alt {
+			timeout-ms = <30>;
+			key-positions = <16 17 18>;
+			bindings = <&kp LA(BACKSPACE)>;
+			layers = <L_BASE L_NUM>;
+		};
 	};
 
 	behaviors {
