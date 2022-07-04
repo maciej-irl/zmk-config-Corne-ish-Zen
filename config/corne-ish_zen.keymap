@@ -130,7 +130,7 @@
 // `-----------|     |     | SPC |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp SEMICOLON	&kp COLON	&kp UNDERSCORE
+&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_SEMI	&kp CLMK_COLON	&kp UNDERSCORE
 &kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp AT_SIGN	&kp DOLLAR	SHK(LCMD)	SHK(LSHIFT)	SHK(LCTRL)	SHK(LALT)
 &kp EXCL	&kp BACKSLASH	&kp LBKT	&kp RBKT	&kp GRAVE	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
 				&trans		&trans		&kp SPACE	&trans		&trans		&trans
