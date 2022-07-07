@@ -155,13 +155,13 @@
 		sym_layer {
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
-// |  +  |  @  |  {  |  }  |  #  |   |  ^  |  &  |  ;  |  :  |  _  |
+// |  +  |  @  |  {  |  }  |  #  |   |  ^  |  &  |  :  |  ;  |  _  |
 // |  -  |  =  |  (  |  )  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
 // |  !  |  \  |  [  |  ]  |  `  |   |  %  |  |  |  <  |  >  |  ~  |
 // `-----------|     |     | SPC |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_SEMI	&kp CLMK_COLON	&kp UNDERSCORE
+&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_COLON	&kp  CLMK_SEMI	&kp UNDERSCORE
 &kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp AT_SIGN	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
 &kp EXCL	&kp BACKSLASH	&kp LBKT	&kp RBKT	&kp GRAVE	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
 				&trans		&trans		&kp SPACE	&trans		&trans		&trans
