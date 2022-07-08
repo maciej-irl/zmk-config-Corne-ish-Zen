@@ -121,6 +121,7 @@
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp SLASH
 #define THUMB_ROW \
 				&kp TAB		&sym_under	&kp SPACE	&sl L_NAV	&skq LSHIFT 	&kp RET
+THUMB_ROW
 			>;
 		};
 
