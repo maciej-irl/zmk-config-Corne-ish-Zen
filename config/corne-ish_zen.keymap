@@ -152,8 +152,8 @@ THUMB_ROW
 // `-----------|     |     | SPC |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_COLON	&kp  CLMK_SEMI	&kp UNDERSCORE
-&kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp AT_SIGN	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
+&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_COLON	&kp CLMK_SEMI	&kp UNDERSCORE
+&kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp ASTERISK	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
 &kp EXCL	&kp BACKSLASH	&kp LBKT	&kp RBKT	&kp GRAVE	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
 				&trans		&trans		&kp SPACE	&trans		&trans		&trans
 			>;
