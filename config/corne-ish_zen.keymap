@@ -95,7 +95,7 @@
 			release-after-ms = <1000>;
 			quick-release;
 		};
-		sym_under: num_under_morph {
+		sym_under: sym_under_morph {
 			compatible = "zmk,behavior-mod-morph";
 			label = "NUM_UNDER_MORPH";
 			#binding-cells = <0>;
@@ -119,7 +119,8 @@
 &kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp APOS
 &kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp SLASH
-				&kp TAB		&sym_under	&kp SPACE	&sl L_NAV	&skq SHIFT 	&kp RET
+#define THUMB_ROW \
+				&kp TAB		&sym_under	&kp SPACE	&sl L_NAV	&skq LSHIFT 	&kp RET
 			>;
 		};
 
@@ -137,7 +138,7 @@
 &kp Q		&kp W		&kp F		&kp P		&kp G		&kp J		&kp L		&kp U		&kp Y		&kp APOS
 &kp A		&kp R		&kp S		&kp T		&kp D		&kp H		&kp N		&kp E		&kp I		&kp O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp K		&kp M		&kp COMMA	&kp DOT		&kp SLASH
-				&kp TAB		&sym_under	&kp SPACE	&sl L_NAV	&skq SHIFT 	&kp RET
+THUMB_ROW
 			>;
 		};
 
