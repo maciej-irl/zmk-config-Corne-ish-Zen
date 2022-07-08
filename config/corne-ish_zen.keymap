@@ -168,9 +168,9 @@ THUMB_ROW
 // `-----------|     | XXX |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_COLON	&kp  CLMK_SEMI	&kp UNDERSCORE
-&kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp AT_SIGN	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&kp EXCL	&kp BACKSLASH	&kp LBKT	&kp RBKT	&kp GRAVE	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
+&kp UNDERSCORE	&kp CLMK_SEMI	&kp CLMK_COLON	&kp AMPERSAND	&kp CARET	&kp HASH	&kp LBRC	&kp RBRC 	&kp AT_SIGN	&kp PLUS
+&sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp DOLLAR	&kp ASTERISK	&sk LPAR	&sk RPAR	&sk EQUAL	&sk MINUS
+&kp TILDE	&kp LT		&kp GT		&kp PIPE	&kp PERCENT	&kp GRAVE	&kp LBKT	&kp RBKT	&kp BACKSLASH	&kp EXCL
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
 		};
