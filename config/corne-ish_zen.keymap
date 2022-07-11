@@ -105,6 +105,13 @@
 			release-after-ms = <1000>;
 			quick-release;
 		};
+		shift_tab: shift_tab_morph {
+			compatible = "zmk,behavior-mod-morph";
+			label = "SHIFT_TAB_MORPH";
+			#binding-cells = <0>;
+			bindings = <&skq LSHIFT>, <&kp TAB>;
+			mods = <MOD_LGUI>;
+		};
 		nav_under: nav_under_morph {
 			compatible = "zmk,behavior-mod-morph";
 			label = "NUM_UNDER_MORPH";
@@ -130,7 +137,7 @@
 &kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp SLASH
 #define THUMB_ROW \
-				&sl L_FUN	&nav_under	&kp SPACE	&skq LSHIFT	&sl L_SYM 	&sl L_NUM
+				&sl L_FUN	&nav_under	&kp SPACE	&shift_tab	&sl L_SYM 	&sl L_NUM
 THUMB_ROW
 			>;
 		};
