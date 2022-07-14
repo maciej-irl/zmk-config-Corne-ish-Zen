@@ -93,16 +93,15 @@
 			compatible = "zmk,behavior-mod-morph";
 			label = "NUM_UNDER_MORPH";
 			#binding-cells = <0>;
-			bindings = <&kp Q>, <&tt Q 0>;
+			bindings = <&kp Q>, <&q_td>;
 			mods = <MOD_LGUI>;
 		};
-		tt: tap_tap {
-			compatible = "zmk,behavior-hold-tap";
-			label = "TAP_TAP";
-			#binding-cells = <2>;
+		q_td: q_tap_dance {
+			compatible = "zmk,behavior-tap-dance";
+			label = "Q_TAP_DANCE";
+			#binding-cells = <0>;
 			tapping-term-ms = <200>;
-			flavor = "tap-preferred";
-			bindings = <&kp>, <&none>;
+			bindings = <&none>, <&kp Q>;
 		};
 	};
 
