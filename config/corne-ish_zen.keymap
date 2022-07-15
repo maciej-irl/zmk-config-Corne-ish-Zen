@@ -1,9 +1,4 @@
-/*
-*
-* Copyright (c) 2021 Darryl deHaan
-* SPDX-License-Identifier: MIT
-*
-*/
+// Set tab size to 8.
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -51,18 +46,18 @@
 	combos {
 		compatible = "zmk,combos";
 		// Left upper.
-		COMBO(esc, L_BASE L_CLMK, 2 3, &kp ESC);
+		COMBO(esc,	L_BASE L_CLMK, 2 3, &kp ESC);
 		// Left lower.
-		COMBO(tab, L_BASE L_CLMK, 21 22, &kp LC(C));
-		COMBO(tab, L_BASE L_CLMK, 22 23, &kp TAB);
+		COMBO(ctrl_c, 	L_BASE L_CLMK, 21 22, &kp LC(C));
+		COMBO(tab, 	L_BASE L_CLMK, 22 23, &kp TAB);
 		// Right upper.
-		COMBO(backspace, L_BASE L_CLMK L_NUM, 6 7, &kp BACKSPACE);
-		COMBO(backspace_alt, L_BASE L_CLMK L_NUM, 7 8, &kp LA(BACKSPACE));
-		COMBO(backspace_cmd, L_BASE L_CLMK L_NUM, 6 7 8, &kp LG(BACKSPACE));
+		COMBO(bs,	L_BASE L_CLMK L_NUM, 6 7, &kp BACKSPACE);
+		COMBO(bs_alt,	L_BASE L_CLMK L_NUM, 7 8, &kp LA(BACKSPACE));
+		COMBO(bs_cmd,	L_BASE L_CLMK L_NUM, 6 7 8, &kp LG(BACKSPACE));
 		// Right lower.
-		COMBO(enter, L_BASE L_CLMK, 26 27, &kp ENTER);
-		COMBO(cmd, L_BASE L_CLMK, 27 28, &kp LEFT_COMMAND);
-		COMBO(cmd_enter, L_BASE L_CLMK, 26 27 28, &kp LG(ENTER));
+		COMBO(enter,	L_BASE L_CLMK, 26 27, &kp ENTER);
+		COMBO(cmd,	L_BASE L_CLMK, 27 28, &kp LEFT_COMMAND);
+		COMBO(cmd_enter,L_BASE L_CLMK, 26 27 28, &kp LG(ENTER));
 	};
 
 	behaviors {
