@@ -92,7 +92,7 @@
 		// Make it so you have to tap cmd-q for a while.
 		q_guard: q_guard_morph {
 			compatible = "zmk,behavior-mod-morph";
-			label = "NUM_UNDER_MORPH";
+			label = "Q_GUARD_MORPH";
 			#binding-cells = <0>;
 			bindings = <&kp Q>, <&q_td>;
 			mods = <MOD_LGUI>;
