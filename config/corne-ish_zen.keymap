@@ -112,7 +112,7 @@
 			tap-ms = <40>;
 			#binding-cells = <0>;
 			bindings = <&macro_tap &kp LA(CLMK_U) &kp CLMK_A>;
-		}
+		};
 		o_umlaut: o_umlaut {
 			label = "ZM_O_UMLAUT";
 			compatible = "zmk,behavior-macro";
@@ -120,7 +120,7 @@
 			tap-ms = <40>;
 			#binding-cells = <0>;
 			bindings = <&macro_tap &kp LA(CLMK_U) &kp CLMK_O>;
-		}
+		};
 		e_acute: e_acute {
 			label = "ZM_A_RING";
 			compatible = "zmk,behavior-macro";
@@ -128,9 +128,8 @@
 			tap-ms = <40>;
 			#binding-cells = <0>;
 			bindings = <&macro_tap &kp LA(CLMK_E) &kp CLMK_E>;
-		}
+		};
         };
-    };
 
 	keymap {
 		compatible = "zmk,keymap";
