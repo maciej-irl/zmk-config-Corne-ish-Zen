@@ -7,8 +7,11 @@
 #define COMBO_TERM_MS 50
 
 // Useful for vim.
+#define CLMK_A A
+#define CLMK_E K
 #define CLMK_G T
 #define CLMK_O SEMICOLON
+#define CLMK_U I
 #define CLMK_SEMI P
 #define CLMK_COLON LS(P)
 
@@ -100,6 +103,34 @@
 			bindings = <&none>, <&kp Q>;
 		};
 	};
+
+	macros {
+		a_umlaut: a_umlaut {
+			label = "ZM_A_UMLAUT";
+			compatible = "zmk,behavior-macro";
+			wait-ms = <30>;
+			tap-ms = <40>;
+			#binding-cells = <0>;
+			bindings = <&macro_tap &kp LA(CLMK_U) &kp CLMK_A>;
+		}
+		o_umlaut: o_umlaut {
+			label = "ZM_O_UMLAUT";
+			compatible = "zmk,behavior-macro";
+			wait-ms = <30>;
+			tap-ms = <40>;
+			#binding-cells = <0>;
+			bindings = <&macro_tap &kp LA(CLMK_U) &kp CLMK_O>;
+		}
+		e_acute: e_acute {
+			label = "ZM_A_RING";
+			compatible = "zmk,behavior-macro";
+			wait-ms = <30>;
+			tap-ms = <40>;
+			#binding-cells = <0>;
+			bindings = <&macro_tap &kp LA(CLMK_E) &kp CLMK_E>;
+		}
+        };
+    };
 
 	keymap {
 		compatible = "zmk,keymap";
@@ -198,13 +229,13 @@ THUMB_ROW
 // ,-----------------------------.   ,-----------------------------.
 // |     | F4  | F5  | F6  | F10 |   |     |     |     |     |     |
 // |     | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
-// |     | F7  | F8  | F9  | F12 |   |     |     |     |     |     |
+// |     | F7  | F8  | F9  | F12 |   |     |  ä  |  å  |  ö  |  é  |
 // `-----------| XXX |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &none		&kp F4		&kp F5		&kp F6		&kp F10		&none		&none		&none		&none		&none
 &none		&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
-&none		&kp F7		&kp F8		&kp F3		&kp F12		&none		&none		&none		&none		&none
+&none		&kp F7		&kp F8		&kp F3		&kp F12		&none		&kp a_umlaut	&kp LA(A)	&kp o_umlaut	&e_acute
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
 		};
