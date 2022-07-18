@@ -186,21 +186,20 @@ THUMB_ROW
 			>;
 		};
 
-		// The media keys and left/right arrows on on the thumb-side for one-handed use.
-		// Duplicate tab for cmd-tab etc.
+		// The media keys are on thumb-side for one-handed use.
 		//TODO: Keys to maybe put here - mute, spotlight, search help, force quit, emoji.
 		nav_layer {
 			label = "NAV";
 // ,-----------------------------.   ,-----------------------------.
 // | LCK | PRV | PLY | NXT | VUP |   |     | BCK | FWD |     |     |
-// |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |     | LFT | DWN | UP  | RGH |
-// | COL |     |     | DIS | MUT |   |     | HME | PDN | PUP | END |
+// |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |  ?  | LFT | DWN | UP  | RGH |
+// | COL |     |     | DIS | MUT |   |     |  ä  |  å  |  ö  |  é  |
 // `-----------|     | XXX |     |   | TAB |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&none		&kp LG(LBKT)	&kp LG(RBKT)	&none		&none
 &sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
-&tog L_CLMK	&none		&none		&kp LG(LS(DOT))	&kp C_MUTE	&none		&kp HOME	&kp PAGE_DOWN	&kp PAGE_UP	&kp END
+&tog L_CLMK	&none		&none		&kp LG(LS(DOT))	&kp C_MUTE	&none		&a_umlaut	&kp LA(A)	&o_umlaut	&e_acute
 				&trans		&trans		&trans		&kp TAB		&trans		&trans
 			>;
 		};
@@ -228,13 +227,13 @@ THUMB_ROW
 // ,-----------------------------.   ,-----------------------------.
 // |     | F4  | F5  | F6  | F10 |   |     |     |     |     |     |
 // |     | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
-// |     | F7  | F8  | F9  | F12 |   |     |  ä  |  å  |  ö  |  é  |
+// |     | F7  | F8  | F9  | F12 |   |     |     |     |     |     |
 // `-----------| XXX |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &none		&kp F4		&kp F5		&kp F6		&kp F10		&none		&none		&none		&none		&none
 &none		&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
-&none		&kp F7		&kp F8		&kp F3		&kp F12		&none		&a_umlaut	&kp LA(A)	&o_umlaut	&e_acute
+&none		&kp F7		&kp F8		&kp F3		&kp F12		&none		&none		&none		&none		&none
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
 		};
