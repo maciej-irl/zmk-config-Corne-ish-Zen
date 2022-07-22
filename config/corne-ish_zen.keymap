@@ -169,18 +169,21 @@ THUMB_ROW
 			>;
 		};
 
+		// The only missing character is `?`.
+		// Carefully laid out key pairs (for vim etc): -= *# ^$ 
+		// Right-side effort adjusted with the thumb placement in mind.
 		sym_layer {
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
-// |  +  |  @  |  {  |  }  |  #  |   |  ^  |  &  |  :  |  ;  |  "  |
-// |  -  |  =  |  (  |  )  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |  !  |  `  |  [  |  ]  |  \  |   |  %  |  |  |  <  |  >  |  ~  |
+// |  +  |  =  |  ;  |  "  |  #  |   |  ^  |  [  |  ]  |  &  |  !  |
+// |  :  |  -  |  (  |  )  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |  \  |  `  |  {  |  }  |  @  |   |  %  |  <  |  >  |  |  |  ~  |
 // `-----------|     |  _  | ... |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp PLUS	&kp AT_SIGN	&kp LBRC	&kp RBRC	&kp HASH	&kp CARET	&kp AMPERSAND	&kp CLMK_COLON	&kp CLMK_SEMI	&kp DOUBLE_QUOTES
-&kp MINUS	&kp EQUAL	&kp LPAR	&kp RPAR	&kp ASTERISK	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&kp EXCL	&kp GRAVE	&kp LBKT	&kp RBKT	&kp BACKSLASH	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
+&kp PLUS	&kp EQUAL	&kp CLMK_SEMI	&kp DQT		&kp HASH	&kp CARET	&kp LBKT	&kp RBKT	&kp AMPERSAND	&kp EXCLAMATION
+&kp CLMK_COLON	&kp MINUS	&kp LPAR	&kp RPAR	&kp ASTERISK	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
+&kp BACKSLASH	&kp GRAVE	&kp LBRC	&kp RBRC	&kp AT_SIGN	&kp PERCENT	&kp LT		&kp GT		&kp PIPE	&kp TILDE
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
 		};
