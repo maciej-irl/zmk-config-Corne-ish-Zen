@@ -22,6 +22,8 @@
 #define L_NUM 5
 #define L_FUN 6
 
+#define BASE_LAYERS L_BASE L_CLMK L_QDH
+
 #define COMBO(NAME, LAYERS, POSITIONS, BINDINGS) \
 	combo_##NAME { \
 		timeout-ms = <COMBO_TERM_MS>; \
@@ -49,17 +51,17 @@
 	combos {
 		compatible = "zmk,combos";
 		// Left upper.
-		COMBO(esc,	L_BASE L_CLMK, 2 3, &kp ESC);
+		COMBO(esc,	BASE_LAYERS, 2 3, &kp ESC);
 		// Left lower.
-		COMBO(ctrl_c, 	L_BASE L_CLMK, 21 22, &kp LC(C));
-		COMBO(tab, 	L_BASE L_CLMK, 22 23, &kp TAB);
+		COMBO(ctrl_c, 	BASE_LAYERS, 21 22, &kp LC(C));
+		COMBO(tab, 	BASE_LAYERS, 22 23, &kp TAB);
 		// Right upper.
-		COMBO(bs,	L_BASE L_CLMK L_NUM, 6 7, &kp BACKSPACE);
-		COMBO(bs_alt,	L_BASE L_CLMK L_NUM, 7 8, &kp LA(BACKSPACE));
-		COMBO(bs_cmd,	L_BASE L_CLMK L_NUM, 6 7 8, &kp LG(BACKSPACE));
+		COMBO(bs,	BASE_LAYERS L_NUM L_SYM, 6 7, &kp BACKSPACE);
+		COMBO(bs_alt,	BASE_LAYERS L_NUM L_SYM, 7 8, &kp LA(BACKSPACE));
+		COMBO(bs_cmd,	BASE_LAYERS L_NUM L_SYM, 6 7 8, &kp LG(BACKSPACE));
 		// Right lower.
-		COMBO(enter,	L_BASE L_CLMK, 26 27, &kp ENTER);
-		COMBO(cmd_enter,L_BASE L_CLMK, 26 27 28, &kp LG(ENTER)); // Useful for Slack.
+		COMBO(enter,	BASE_LAYERS, 26 27, &kp ENTER);
+		COMBO(cmd_enter,BASE_LAYERS, 26 27 28, &kp LG(ENTER)); // Useful for Slack.
 	};
 
 	behaviors {
