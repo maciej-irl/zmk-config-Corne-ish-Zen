@@ -9,7 +9,6 @@
 // Useful for vim.
 #define CLMK_A A
 #define CLMK_E K
-#define CLMK_G T
 #define CLMK_O SEMICOLON
 #define CLMK_U I
 #define CLMK_SEMI P
@@ -180,9 +179,9 @@ THUMB_ROW
 // `-----------| ... | ... | ... |   | ... | ... | ... |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&q_guard	&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp APOS
-&kp A		&kp S		&kp D		&kp F		&kp G		&kp M		&kp J		&kp K		&kp L		&kp CLMK_O
-&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp H		&kp COMMA	&kp DOT		&kp SLASH
+&q_guard	&kp W		&kp E		&kp R		&kp B		&kp Y		&kp U		&kp I		&kp O		&kp APOS
+&kp A		&kp S		&kp D		&kp F		&kp T		&kp M		&kp J		&kp K		&kp L		&kp CLMK_O
+&kp Z		&kp X		&kp C		&kp G		&kp V		&kp N		&kp H		&kp COMMA	&kp DOT		&kp SLASH
 THUMB_ROW
 			>;
 		};
