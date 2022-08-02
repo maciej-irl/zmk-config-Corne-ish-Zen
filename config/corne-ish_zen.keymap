@@ -216,7 +216,7 @@ THUMB_ROW
 // `-----------| LFT | XXX | RGH |   | TAB |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&none		&kp BSPC	&kp LA(BSPC)	&none		&kp ENTER
+&kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&none		&kp BSPC	&kp LA(BSPC)	&none		&none
 &sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&kp ESC		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
 &tog L_CLMK	&tog L_QDH	&none		&kp LG(LS(DOT))	&kp C_MUTE	&e_acute	&a_umlaut	&kp LA(A)	&o_umlaut	&kp ENTER
 				&kp LEFT	&trans		&kp RIGHT	&kp TAB		&trans		&trans
