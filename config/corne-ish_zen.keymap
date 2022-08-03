@@ -54,7 +54,6 @@
 		COMBO(esc,	BASE_LAYERS, 2 3, &kp ESC);
 		// Left lower.
 		COMBO(ctrl_c, 	BASE_LAYERS, 21 22, &kp LC(C));
-		COMBO(tab, 	BASE_LAYERS, 22 23, &kp TAB);
 		// Right upper.
 		COMBO(bs,	BASE_LAYERS L_NUM L_SYM, 6 7, &kp BACKSPACE);
 		COMBO(bs_alt,	BASE_LAYERS L_NUM L_SYM, 7 8, &kp LA(BACKSPACE));
@@ -135,9 +134,9 @@
 		default_layer {
 			label = "BASE";
 // ,-----------------------------.   ,-----------------------------.
-// |  Q  | W   |  E-ESC- R |  T  |   |  Y  |  U-BSP-I-WRD-O  |  '  |
-// |  A  | S   |  D  |   F |  G  |   |  H  |  J  |  K  |  L  |  ;  |
-// |  Z  | X -CTC-C-TAB- V |  B  |   |  N  |  M  |  ,  |  .  |  /  |
+// |  Q  |  W  |  E-ESC-R  |  T  |   |  Y  |  U-BSP-I-WRD-O  |  '  |
+// |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |
+// |  Z  |  X-CTC-C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |
 // `-----------| fun | nav | SPC |   | SFT | sym | num |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
@@ -206,19 +205,18 @@ THUMB_ROW
 		};
 
 		// The media keys are on thumb-side for one-handed use.
-		//TODO: Keys to maybe put here - mute, spotlight, search help, force quit, emoji.
 		nav_layer {
 			label = "NAV";
 // ,-----------------------------.   ,-----------------------------.
-// | LCK | PRV | PLY | NXT | VUP |   |     | BSP | WRD |     | ENT |
+// | LCK | PRV | PLY | NXT | VUP |   |     | BSP | WRD |     |     |
 // |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   | ESC | LFT | DWN | UP  | RGH |
-// | COL | QDH |     | DIS | MUT |   |  é  |  ä  |  å  |  ö  | ENT |
+// |     |     |     | DIS | MUT |   |  é  |  ä  |  å  |  ö  | ENT |
 // `-----------| LFT | XXX | RGH |   | TAB |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&none		&kp BSPC	&kp LA(BSPC)	&none		&none
 &sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&kp ESC		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
-&tog L_CLMK	&tog L_QDH	&none		&kp LG(LS(DOT))	&kp C_MUTE	&e_acute	&a_umlaut	&kp LA(A)	&o_umlaut	&kp ENTER
+&none		&none		&none		&kp LG(LS(DOT))	&kp C_MUTE	&e_acute	&a_umlaut	&kp LA(A)	&o_umlaut	&kp ENTER
 				&kp LEFT	&trans		&kp RIGHT	&kp TAB		&trans		&trans
 			>;
 		};
@@ -244,14 +242,14 @@ THUMB_ROW
 		fun_layer {
 			label = "FUN";
 // ,-----------------------------.   ,-----------------------------.
-// |     | F4  | F5  | F6  | F10 |   | BT0 | BT1 | BT2 | BT3 | BT4 |
-// |     | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
+// | QDH | F4  | F5  | F6  | F10 |   | BT0 | BT1 | BT2 | BT3 | BT4 |
+// | COL | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
 // |     | F7  | F8  | F9  | F12 |   | BTC |     |     |     |     |
 // `-----------| XXX |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&none		&kp F4		&kp F5		&kp F6		&kp F10		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
-&none		&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
+&tog L_QDH	&kp F4		&kp F5		&kp F6		&kp F10		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
+&tog L_CLMK	&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
 &none		&kp F7		&kp F8		&kp F3		&kp F12		&bt BT_CLR	&none		&none		&none		&none
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
