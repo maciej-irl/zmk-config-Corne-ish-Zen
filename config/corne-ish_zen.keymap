@@ -15,14 +15,15 @@
 #define CLMK_COLON LS(P)
 
 #define L_BASE 0
-#define L_CLMK 1
-#define L_QDH 2
+#define L_CDH 1
+#define L_BOG 2
 #define L_SYM 3
-#define L_NAV 4
-#define L_NUM 5
-#define L_FUN 6
+#define L_SYM2 4
+#define L_NAV 5
+#define L_NUM 6
+#define L_FUN 7
 
-#define BASE_LAYERS L_BASE L_CLMK L_QDH
+#define BASE_LAYERS L_BASE L_CDH L_BOG
 
 #define COMBO(NAME, LAYERS, POSITIONS, BINDINGS) \
 	combo_##NAME { \
@@ -55,9 +56,9 @@
 		// Left lower.
 		COMBO(ctrl_c, 	BASE_LAYERS, 21 22, &kp LC(C));
 		// Right upper.
-		COMBO(bs,	BASE_LAYERS L_NUM L_SYM, 6 7, &kp BACKSPACE);
-		COMBO(bs_alt,	BASE_LAYERS L_NUM L_SYM, 7 8, &kp LA(BACKSPACE));
-		COMBO(bs_cmd,	BASE_LAYERS L_NUM L_SYM, 6 7 8, &kp LG(BACKSPACE));
+		COMBO(bs,	BASE_LAYERS L_NUM L_SYM L_SYM2, 6 7, &kp BACKSPACE);
+		COMBO(bs_alt,	BASE_LAYERS L_NUM L_SYM L_SYM2, 7 8, &kp LA(BACKSPACE));
+		COMBO(bs_cmd,	BASE_LAYERS L_NUM L_SYM L_SYM2, 6 7 8, &kp LG(BACKSPACE));
 	};
 
 	behaviors {
@@ -147,19 +148,19 @@
 &kp A		&kp S		&kp D		&kp F		&kp T		&kp M		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp G		&kp V		&kp N		&kp H		&kp COMMA	&kp DOT		&kp SLASH
 #define THUMB_ROW \
-				&sl L_FUN	&nav_under	&kp SPACE	&shift_tab	&sl L_SYM 	&sl L_NUM
+				&sl L_FUN	&nav_under	&kp SPACE	&shift_tab	&sl L_SYM2 	&sl L_NUM
 THUMB_ROW
 			>;
 		};
 
-		// Same as above but hard-coded Colemak.
+		// Same as above but hard-coded Colemak-DH.
 		// Note right now there is no way to type : and ;
 		colemak_layer {
-			label = "CLMK";
+			label = "CDH";
 // ,-----------------------------.   ,-----------------------------.
-// |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  '  |
-// |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  |
-// |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  |
+// |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  |  '  |
+// |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |
+// |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  |
 // `-----------| ... | ... | ... |   | ... | ... | ... |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
@@ -170,19 +171,21 @@ THUMB_ROW
 			>;
 		};
 
-		// Cursed layout made to work like Colemak-DH when the laptop is set to Colemak.
-		qwertydh_layer {
-			label = "QDH";
+		// Same as base layer but uses L_SYM instead of L_SYM2
+		default_og_layer {
+			label = "BOG";
 // ,-----------------------------.   ,-----------------------------.
-// | ... | ... | ... | ... |  B  |   | ... | ... | ... | ... | ... |
-// | ... | ... | ... | ... |  T  |   |  M  | ... | ... | ... | ... |
-// | ... | ... | ... |  G  |  V  |   | ... |  H  | ... | ... | ... |
-// `-----------| ... | ... | ... |   | ... | ... | ... |-----------'
+// |  Q  |  W  |  E-ESC-R  |  B  |   |  Y  |  U-BSP-I-WRD-O  |  '  |
+// |  A  |  S  |  D  |  F  |  T  |   |  M  |  J  |  K  |  L  |  ;  |
+// |  Z  |  X-CTC-C  |  G  |  V  |   |  N  |  H  |  ,  |  .  |  /  |
+// `-----------| fun | nav | SPC |   | SFT | sym | num |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &q_guard	&kp W		&kp E		&kp R		&kp B		&kp Y		&kp U		&kp I		&kp O		&kp APOS
 &kp A		&kp S		&kp D		&kp F		&kp T		&kp M		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp G		&kp V		&kp N		&kp H		&kp COMMA	&kp DOT		&kp SLASH
+#define THUMB_ROW \
+				&sl L_FUN	&nav_under	&kp SPACE	&shift_tab	&sl L_SYM 	&sl L_NUM
 THUMB_ROW
 			>;
 		};
@@ -206,6 +209,19 @@ THUMB_ROW
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
 		};
+
+		sym2_layer {
+			label = "SYM2";
+// ,-----------------------------.   ,-----------------------------.
+// |  +  |  [  |  {  |  (  |  #  |   |  ^  |  )  |  }  |  ]  |  !  |
+// |  -  |  =  |  :  |  "  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// |  |  |  &  |  ;  |  `  |  @  |   |  %  |  \  |  <  |  >  |  ~  |
+// `-----------|     |  _  | ... |   |     | XXX |     |-----------'
+//             `-----------------'   `-----------------'
+			bindings = <
+&kp PLUS	&kp LBKT	&kp LBRC	&kp LPAR	&kp HASH	&kp CARET	&kp RPAR	&kp RBRC	&kp RBKT	&kp EXCLAMATION
+&kp MINUS	&kp EQUAL	&kp CLMK_COLON	&kp DQT		&kp ASTERISK	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
+&kp PIPE	&kp AMPERSAND	&kp CLMK_SEMI	&kp GRAVE	&kp AT_SIGN	&kp PERCENT	&kp BACKSLASH	&kp LT		&kp GT		&kp TILDE
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
 		};
