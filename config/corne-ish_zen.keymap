@@ -191,15 +191,18 @@ THUMB_ROW
 		sym_layer {
 			label = "SYM";
 // ,-----------------------------.   ,-----------------------------.
-// |  +  |  -  |  =  |  "  |  #  |   |  ^  |  [  |  ]  |  &  |  !  |
+// |  +  |  -  |  =  |  "  |  #  |   |  ^  |  {  |  }  |  &  |  !  |
 // |  :  |  ;  |  (  |  )  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |  \  |  `  |  {  |  }  |  @  |   |  %  |  |  |  <  |  >  |  ~  |
+// |  \  |  `  |  [  |  ]  |  @  |   |  %  |  |  |  <  |  >  |  ~  |
 // `-----------|     |  _  | ... |   |     | XXX |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp PLUS	&kp MINUS	&kp EQUAL	&kp DQT		&kp HASH	&kp CARET	&kp LBKT	&kp RBKT	&kp AMPERSAND	&kp EXCLAMATION
+&kp PLUS	&kp MINUS	&kp EQUAL	&kp DQT		&kp HASH	&kp CARET	&kp LBRC	&kp RBRC	&kp AMPERSAND	&kp EXCLAMATION
 &kp CLMK_COLON	&kp CLMK_SEMI	&kp LPAR	&kp RPAR	&kp ASTERISK	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&kp BACKSLASH	&kp GRAVE	&kp LBRC	&kp RBRC	&kp AT_SIGN	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
+&kp BACKSLASH	&kp GRAVE	&kp LBKT	&kp RBKT	&kp AT_SIGN	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
+				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
+			>;
+		};
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
 		};
