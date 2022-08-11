@@ -264,14 +264,14 @@ THUMB_ROW
 		fun_layer {
 			label = "FUN";
 // ,-----------------------------.   ,-----------------------------.
-// | QDH | F4  | F5  | F6  | F10 |   | BT0 | BT1 | BT2 | BT3 | BT4 |
-// | COL | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
+// | BOG | F4  | F5  | F6  | F10 |   | BT0 | BT1 | BT2 | BT3 | BT4 |
+// | CDH | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
 // |     | F7  | F8  | F9  | F12 |   | BTC |     |     |     |     |
 // `-----------| XXX |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&tog L_QDH	&kp F4		&kp F5		&kp F6		&kp F10		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
-&tog L_CLMK	&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
+&tog L_BOG	&kp F4		&kp F5		&kp F6		&kp F10		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
+&tog L_CDH	&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
 &none		&kp F7		&kp F8		&kp F3		&kp F12		&bt BT_CLR	&none		&none		&none		&none
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
