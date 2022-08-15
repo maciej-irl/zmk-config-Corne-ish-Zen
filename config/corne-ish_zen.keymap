@@ -248,13 +248,13 @@ THUMB_ROW
 // ,-----------------------------.   ,-----------------------------.
 // |  -  |  4  |  5  |  6  |  /  |   |     |  (  |  )  |     |     |
 // |  +  |  1  |  2  |  3  |  *  |   |     |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |     |  7  |  8  |  9  |     |   |     |     |  ,  |  .  |     |
+// |     |  7  |  8  |  9  |     |   |     |     |  ,  |  .  | ENT |
 // `-----------|     |  _  |  0  |   |     |     | XXX |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp MINUS	&kp N4		&kp N5		&kp N6		&kp SLASH	&none		&kp LPAR	&kp RPAR	&none		&none
 &kp PLUS	&kp N1		&kp N2		&kp N3		&kp ASTERISK	&none		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&none		&kp N7		&kp N8		&kp N9		&none		&none		&none		&kp COMMA	&kp DOT		&none
+&none		&kp N7		&kp N8		&kp N9		&none		&none		&none		&kp COMMA	&kp DOT		&kp ENTER
 				&trans		&kp UNDERSCORE	&kp N0		&trans		&trans		&trans
 			>;
 		};
