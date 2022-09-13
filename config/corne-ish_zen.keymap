@@ -55,10 +55,6 @@
 		COMBO(esc,	BASE_LAYERS, 2 3, &kp ESC);
 		// Left lower.
 		COMBO(ctrl_c, 	BASE_LAYERS, 21 22, &kp LC(C));
-		// Right upper.
-		COMBO(bs,	BASE_LAYERS L_NUM L_SYM L_SYM2, 6 7, &kp BACKSPACE);
-		COMBO(bs_alt,	BASE_LAYERS L_NUM L_SYM L_SYM2, 7 8, &kp LA(BACKSPACE));
-		COMBO(bs_cmd,	BASE_LAYERS L_NUM L_SYM L_SYM2, 6 7 8, &kp LG(BACKSPACE));
 	};
 
 	behaviors {
