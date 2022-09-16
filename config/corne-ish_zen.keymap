@@ -19,7 +19,7 @@
 #define L_NUM 4
 #define L_FUN 5
 
-#define BASE_LAYERS L_BASE L_CDH L_BOG
+#define BASE_LAYERS L_BASE L_CDH
 
 #define COMBO(NAME, LAYERS, POSITIONS, BINDINGS) \
 	combo_##NAME { \
