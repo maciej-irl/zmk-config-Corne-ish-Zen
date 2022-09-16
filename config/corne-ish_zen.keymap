@@ -4,8 +4,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define COMBO_TERM_MS 50
-
 // Useful for vim.
 #define CLMK_A A
 #define CLMK_E K
@@ -16,18 +14,16 @@
 
 #define L_BASE 0
 #define L_CDH 1
-#define L_BOG 2
-#define L_SYM 3
-#define L_SYM2 4
-#define L_NAV 5
-#define L_NUM 6
-#define L_FUN 7
+#define L_SYM 2
+#define L_NAV 3
+#define L_NUM 4
+#define L_FUN 5
 
 #define BASE_LAYERS L_BASE L_CDH L_BOG
 
 #define COMBO(NAME, LAYERS, POSITIONS, BINDINGS) \
 	combo_##NAME { \
-		timeout-ms = <COMBO_TERM_MS>; \
+		timeout-ms = <50>; \
 		key-positions = <POSITIONS>; \
 		bindings = <BINDINGS>; \
 		layers = <LAYERS>; \
@@ -134,7 +130,7 @@
 		default_layer {
 			label = "BASE";
 // ,-----------------------------.   ,-----------------------------.
-// |  Q  |  W  |  E-ESC-R  |  B  |   |  Y  |  U-BSP-I-WRD-O  |  '  |
+// |  Q  |  W  |  E-ESC-R  |  B  |   |  Y  |  U  |  I  |  O  |  '  |
 // |  A  |  S  |  D  |  F  |  T  |   |  M  |  J  |  K  |  L  |  ;  |
 // |  Z  |  X-CTC-C  |  G  |  V  |   |  N  |  H  |  ,  |  .  |  /  |
 // `-----------| fun | nav | SPC |   | SFT | sym | num |-----------'
@@ -144,7 +140,7 @@
 &kp A		&kp S		&kp D		&kp F		&kp T		&kp M		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp G		&kp V		&kp N		&kp H		&kp COMMA	&kp DOT		&kp SLASH
 #define THUMB_ROW \
-				&sl L_FUN	&nav_under	&kp SPACE	&shift_tab	&sl L_SYM2 	&sl L_NUM
+				&sl L_FUN	&nav_under	&kp SPACE	&shift_tab	&sl L_SYM 	&sl L_NUM
 THUMB_ROW
 			>;
 		};
@@ -167,47 +163,8 @@ THUMB_ROW
 			>;
 		};
 
-		// Same as base layer but uses L_SYM instead of L_SYM2
-		default_og_layer {
-			label = "BOG";
-// ,-----------------------------.   ,-----------------------------.
-// |  Q  |  W  |  E-ESC-R  |  B  |   |  Y  |  U-BSP-I-WRD-O  |  '  |
-// |  A  |  S  |  D  |  F  |  T  |   |  M  |  J  |  K  |  L  |  ;  |
-// |  Z  |  X-CTC-C  |  G  |  V  |   |  N  |  H  |  ,  |  .  |  /  |
-// `-----------| fun | nav | SPC |   | SFT | sym | num |-----------'
-//             `-----------------'   `-----------------'
-			bindings = <
-&q_guard	&kp W		&kp E		&kp R		&kp B		&kp Y		&kp U		&kp I		&kp O		&kp APOS
-&kp A		&kp S		&kp D		&kp F		&kp T		&kp M		&kp J		&kp K		&kp L		&kp CLMK_O
-&kp Z		&kp X		&kp C		&kp G		&kp V		&kp N		&kp H		&kp COMMA	&kp DOT		&kp SLASH
-#define THUMB_ROW \
-				&sl L_FUN	&nav_under	&kp SPACE	&shift_tab	&sl L_SYM 	&sl L_NUM
-THUMB_ROW
-			>;
-		};
-
-		// The only missing character is `?`.
-		// Carefully laid out key pairs (for vim etc): -= *# ^$ 
-		// Right-side effort adjusted with the thumb placement in mind.
-		// Bigrams to keep in mind: ); ): -> =>
 		sym_layer {
 			label = "SYM";
-// ,-----------------------------.   ,-----------------------------.
-// |  +  |  -  |  =  |  "  |  #  |   |  ^  |  {  |  }  |  &  |  !  |
-// |  :  |  ;  |  (  |  )  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// |  \  |  `  |  [  |  ]  |  @  |   |  %  |  |  |  <  |  >  |  ~  |
-// `-----------|     |  _  | ... |   |     | XXX |     |-----------'
-//             `-----------------'   `-----------------'
-			bindings = <
-&kp PLUS	&kp MINUS	&kp EQUAL	&kp DQT		&kp HASH	&kp CARET	&kp LBRC	&kp RBRC	&kp AMPERSAND	&kp EXCLAMATION
-&kp CLMK_COLON	&kp CLMK_SEMI	&kp LPAR	&kp RPAR	&kp ASTERISK	&kp DOLLAR	&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&kp BACKSLASH	&kp GRAVE	&kp LBKT	&kp RBKT	&kp AT_SIGN	&kp PERCENT	&kp PIPE	&kp LT		&kp GT		&kp TILDE
-				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
-			>;
-		};
-
-		sym2_layer {
-			label = "SYM2";
 // ,-----------------------------.   ,-----------------------------.
 // |  +  |  [  |  {  |  (  |  #  |   |  ^  |  )  |  }  |  ]  |  !  |
 // |  -  |  =  |  :  |  "  |  *  |   |  $  |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
@@ -226,13 +183,13 @@ THUMB_ROW
 		nav_layer {
 			label = "NAV";
 // ,-----------------------------.   ,-----------------------------.
-// | LCK | PRV | PLY | NXT | VUP |   |     | BSP | WRD |     |     |
+// | LCK | PRV | PLY | NXT | VUP |   |     | BSP | WRD | DEL |     |
 // |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   | ESC | LFT | DWN | UP  | RGH |
 // | ENT |     |     | DIS | MUT |   |  é  |  ä  |  å  |  ö  | ENT |
 // `-----------| LFT | XXX | RGH |   | TAB |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&none		&kp BSPC	&kp LA(BSPC)	&none		&none
+&kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&none		&kp BSPC	&kp LA(BSPC)	&kp LG(BSPC)	&none
 &sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&kp ESC		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
 &kp ENTER	&none		&none		&kp LG(LS(DOT))	&kp C_MUTE	&e_acute	&a_umlaut	&kp LA(A)	&o_umlaut	&kp ENTER
 				&kp LEFT	&trans		&kp RIGHT	&kp TAB		&trans		&trans
@@ -266,8 +223,8 @@ THUMB_ROW
 // `-----------| XXX |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&tog L_BOG	&kp F4		&kp F5		&kp F6		&kp F10		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
-&tog L_CDH	&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
+&tog L_CDH	&kp F4		&kp F5		&kp F6		&kp F10		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
+&none		&kp F1		&kp F2		&kp F3		&kp F11		&none		&none		&none		&none		&none
 &none		&kp F7		&kp F8		&kp F3		&kp F12		&bt BT_CLR	&none		&none		&none		&none
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
