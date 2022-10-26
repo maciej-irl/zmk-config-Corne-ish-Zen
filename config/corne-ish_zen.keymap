@@ -127,7 +127,7 @@
 			wait-ms = <30>;
 			tap-ms = <40>;
 			#binding-cells = <0>;
-			bindings = <&macro_release &kp LSHFT>, <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_A)>, <&macro_press &kp LSHFT>;
+			bindings = <&macro_release &kp LSHFT>, <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_A)>;
 		};
 		o_umlaut_lower: o_umlaut_lower {
 			label = "ZM_O_UMLAUT_LOWER";
@@ -143,7 +143,7 @@
 			wait-ms = <30>;
 			tap-ms = <40>;
 			#binding-cells = <0>;
-			bindings = <&macro_release &kp LSHFT>, <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_O)>, <&macro_press &kp LSHFT>;
+			bindings = <&macro_release &kp LSHFT>, <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_O)>;
 		};
 		e_acute: e_acute {
 			label = "ZM_A_RING";
