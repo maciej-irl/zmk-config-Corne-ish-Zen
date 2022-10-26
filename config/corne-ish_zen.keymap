@@ -62,6 +62,8 @@
 			release-after-ms = <1000>;
 			quick-release;
 		};
+
+		// Some simple mod morphs.
 		shift_tab: shift_tab_morph {
 			compatible = "zmk,behavior-mod-morph";
 			label = "SHIFT_TAB_MORPH";
@@ -74,6 +76,15 @@
 			label = "NUM_UNDER_MORPH";
 			#binding-cells = <0>;
 			bindings = <&sl L_NAV>, <&kp UNDERSCORE>;
+			mods = <MOD_LSFT>;
+		};
+
+		// Make pseudo Swedish-keys work with Shift.
+		a_umlaut: a_umlaut_morph {
+			compatible = "zmk,behavior-mod-morph";
+			label = "A_UMLAUT_MORPH";
+			#binding-cells = <0>;
+			bindings = <&a_umlaut_lower>, <&a_umlaut_cap>;
 			mods = <MOD_LSFT>;
 		};
 
@@ -95,13 +106,21 @@
 	};
 
 	macros {
-		a_umlaut: a_umlaut {
+		a_umlaut_lower: a_umlaut_lower {
 			label = "ZM_A_UMLAUT";
 			compatible = "zmk,behavior-macro";
 			wait-ms = <30>;
 			tap-ms = <40>;
 			#binding-cells = <0>;
 			bindings = <&macro_tap &kp LA(CLMK_U) &kp CLMK_A>;
+		};
+		a_umlaut_cap: a_umlaut_cap {
+			label = "ZM_A_UMLAUT_CAP";
+			compatible = "zmk,behavior-macro";
+			wait-ms = <30>;
+			tap-ms = <40>;
+			#binding-cells = <0>;
+			bindings = <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_A)>;
 		};
 		o_umlaut: o_umlaut {
 			label = "ZM_O_UMLAUT";
