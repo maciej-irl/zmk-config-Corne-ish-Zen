@@ -87,6 +87,13 @@
 			bindings = <&a_umlaut_lower>, <&a_umlaut_cap>;
 			mods = <MOD_LSFT>;
 		};
+		o_umlaut: o_umlaut_morph {
+			compatible = "zmk,behavior-mod-morph";
+			label = "O_UMLAUT_MORPH";
+			#binding-cells = <0>;
+			bindings = <&o_umlaut_lower>, <&o_umlaut_cap>;
+			mods = <MOD_LSFT>;
+		};
 
 		// Make it so you have to tap cmd-q for a while.
 		q_guard: q_guard_morph {
@@ -107,7 +114,7 @@
 
 	macros {
 		a_umlaut_lower: a_umlaut_lower {
-			label = "ZM_A_UMLAUT";
+			label = "ZM_A_UMLAUT_LOWER";
 			compatible = "zmk,behavior-macro";
 			wait-ms = <30>;
 			tap-ms = <40>;
@@ -120,15 +127,23 @@
 			wait-ms = <30>;
 			tap-ms = <40>;
 			#binding-cells = <0>;
-			bindings = <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_A)>;
+			bindings = <&macro_release &kp LSHFT>, <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_A)>;
 		};
-		o_umlaut: o_umlaut {
-			label = "ZM_O_UMLAUT";
+		o_umlaut_lower: o_umlaut_lower {
+			label = "ZM_O_UMLAUT_LOWER";
 			compatible = "zmk,behavior-macro";
 			wait-ms = <30>;
 			tap-ms = <40>;
 			#binding-cells = <0>;
 			bindings = <&macro_tap &kp LA(CLMK_U) &kp CLMK_O>;
+		};
+		o_umlaut_cap: o_umlaut_cap {
+			label = "ZM_O_UMLAUT_CAP";
+			compatible = "zmk,behavior-macro";
+			wait-ms = <30>;
+			tap-ms = <40>;
+			#binding-cells = <0>;
+			bindings = <&macro_release &kp LSHFT>, <&macro_tap &kp LA(CLMK_U) &kp LS(CLMK_O)>;
 		};
 		e_acute: e_acute {
 			label = "ZM_A_RING";
