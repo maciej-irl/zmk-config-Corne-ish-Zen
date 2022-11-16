@@ -69,6 +69,29 @@
 			bindings = <&skq LSHIFT>, <&kp TAB>;
 			mods = <MOD_LGUI>;
 		};
+		
+		// Bracket tap dances.
+		par_td: par_tap_dance {
+			compatible = "zmk,behavior-tap-dance";
+			label = "PAR_TAP_DANCE";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp LPAR>, <&kp RPAR>;
+		};
+		brc_td: brc_tap_dance {
+			compatible = "zmk,behavior-tap-dance";
+			label = "BRC_TAP_DANCE";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp LBRC>, <&kp RBRC>;
+		};
+		bkt_td: bkt_tap_dance {
+			compatible = "zmk,behavior-tap-dance";
+			label = "BKT_TAP_DANCE";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp LBKT>, <&kp RBKT>;
+		};
 
 		// Make pseudo Swedish-keys work with Shift.
 		a_umlaut: a_umlaut_morph {
@@ -195,7 +218,7 @@ THUMB_ROW
 // `-----------|  ^  |  _  | SPC |   | XXX |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp PLUS	&kp LBKT	&kp LBRC	&kp LPAR	&kp HASH	&kp DOLLAR	&kp BSPC	&kp LA(BSPC)	&kp TILDE	&kp EXCLAMATION
+&kp PLUS	&bkt_td		&brc_td		&par_td		&kp HASH	&kp DOLLAR	&kp BSPC	&kp LA(BSPC)	&kp TILDE	&kp EXCLAMATION
 &kp MINUS	&kp EQUAL	&kp CLMK_COLON	&kp DQT		&kp ASTERISK	&kp ESC		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
 &kp PIPE	&kp AMPERSAND	&kp CLMK_SEMI	&kp GRAVE	&kp AT_SIGN	&kp PERCENT	&kp BACKSLASH	&kp LT		&kp GT		&kp ENTER
 				&kp CARET	&kp UNDERSCORE	&trans		&trans		&trans		&trans
