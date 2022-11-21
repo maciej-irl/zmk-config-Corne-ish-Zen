@@ -201,13 +201,13 @@ THUMB_ROW
 			label = "A";
 // ,-----------------------------.   ,-----------------------------.
 // |  `  |  ?  | WRD | BSP |  @  |   |  #  |  =  |  <  |  >  |  "  |
-// | LFT | DWN | UP  | RGH | ESC |   | TAB |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// | LFT | DWN | UP  | RGH | TAB |   | ESC |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
 // | ENT |  {--}--(--)--[--]--\  |   |  *  |  -  |  :  |  ;  |  $  |
 // `-----------|     |  _  | SPC |   | XXX |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
 &kp GRAVE	&kp QUESTION	&kp LA(BSPC)	&kp BSPC	&kp AT_SIGN	&kp HASH	&kp EQUAL	&kp LT		&kp GT		&kp DOUBLE_QUOTES
-&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp ESC		&kp TAB		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
+&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp TAB		&kp ESC		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
 &kp ENTER	&kp LBRC	&kp LPAR	&kp LBKT	&kp BACKSLASH	&kp ASTERISK	&kp MINUS	&kp CLMK_COLON	&kp CLMK_SEMI	&kp DOLLAR
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
