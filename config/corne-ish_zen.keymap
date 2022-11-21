@@ -4,7 +4,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// Useful for vim.
 #define CLMK_A A
 #define CLMK_E K
 #define CLMK_O SEMICOLON
@@ -153,6 +152,8 @@
 		compatible = "zmk,keymap";
 
 		// Base layer.
+		// The shift acts as a tab to make typing SCREAMING_SNAKE case
+		// easier.
 		default_layer {
 			label = "BASE";
 // ,-----------------------------.   ,-----------------------------.
@@ -166,13 +167,13 @@
 &kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp SLASH
 #define THUMB_ROW \
-				&sl L_FUN	&sl L_B		&kp SPACE	&sl L_A		&shift_tab 	&sl &kp LG(LS(DOT))
+				&sl L_FUN	&sl L_B		&kp SPACE	&sl L_A		&shift_tab 	&kp LG(LS(DOT))
 THUMB_ROW
 			>;
 		};
 
 		// Same as above but hard-coded Colemak.
-		// Note right now there is no way to type : and ;
+		// Note right now there is no handy way to type : and ;
 		colemak_layer {
 			label = "CDH";
 // ,-----------------------------.   ,-----------------------------.
@@ -189,35 +190,47 @@ THUMB_ROW
 			>;
 		};
 
+		// Layer A.
+		// Base qwerty special characters should go on the left here.
+		// This way any non-numeric macOS shortcut can be typed with
+		// either base layer or this layer. Namely: \ [ ] = - `
+		// However, I'm making a special exception for - and = since
+		// they are frequent in code and only really used for zoom.
+		// $ is here for one reason: JS template literals.
 		a_layer {
 			label = "A";
 // ,-----------------------------.   ,-----------------------------.
-// |  !  |  ?  | WRD | BSP |  @  |   |     |  =  |  <  |  >  |  "  |
-// | LFT | DWN | UP  | RGH | ESC |   |     |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// | ENT |  {--}--(--)--[--]--\  |   |     |  `  |  :  |  ;  |  ~  |
+// |  `  |  ?  | WRD | BSP |  @  |   |  #  |  =  |  <  |  >  |  "  |
+// | LFT | DWN | UP  | RGH | ESC |   | TAB |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
+// | ENT |  {--}--(--)--[--]--\  |   |  *  |  -  |  :  |  ;  |  $  |
 // `-----------|     |  _  | SPC |   | XXX |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp EXCL	&kp QUESTION	&kp LA(BSPC)	&kp BSPC	&kp AT_SIGN	&none		&kp EQUAL	&kp LT		&kp GT		&kp DQT
-&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp ESC		&none		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&kp ENTER	&kp LBRC	&kp LPAR	&kp LBKT	&kp BACKSLASH	&none		&kp BACKSLASH	&kp CLMK_COLON	&kp CLMK_SEMI	&kp TILDE
+&kp GRAVE	&kp QUESTION	&kp LA(BSPC)	&kp BSPC	&kp AT_SIGN	&kp HASH	&kp EQUAL	&kp LT		&kp GT		&kp DOUBLE_QUOTES
+&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp ESC		&kp TAB		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
+&kp ENTER	&kp LBRC	&kp LPAR	&kp LBKT	&kp BACKSLASH	&kp ASTERISK	&kp MINUS	&kp CLMK_COLON	&kp CLMK_SEMI	&kp DOLLAR
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
 		};
 
-		// The media keys are on thumb-side for one-handed use.
+		// Layer B.
+		// The media keys, enter, and lock are on thumb-side for
+		// one-handed use. Left and right arrows are duplicated
+		// around the thumb-key. The idea is you press the
+		// thumb-key with the the middle finger then use index and
+		// ring fingers to control video playback.
 		b_layer {
 			label = "B";
 // ,-----------------------------.   ,-----------------------------.
-// | LCK | PRV | PLY | NXT | VUP |   |  #  |  4  |  5  |  6  |  +  |
-// |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |  *  |  1  |  2  |  3  |  -  |
-// |  |  |  &  |  ^  |  $  | MUT |   |  %  |  7  |  8  |  9  |  /  |
+// | LCK | PRV | PLY | NXT | VUP |   |  |  |  4  |  5  |  6  |  !  |
+// |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |  &  |  1  |  2  |  3  |  +  |
+// | ENT |     |     |  ^  | MUT |   |  %  |  7  |  8  |  9  |  ~  |
 // `-----------| LFT | XXX | RGH |   |  0  |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&kp HASH	&kp N4		&kp N5		&kp N6		&kp PLUS
-&sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&kp ASTERISK	&kp N1		&kp N2		&kp N3		&kp MINUS
-&kp PIPE	&kp AMPERSAND	&kp CARET	&kp DOLLAR	&kp C_MUTE	&kp PERCENT	&kp N7		&kp N8		&kp N9		&kp SLASH
+&kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&kp PIPE	&kp N4		&kp N5		&kp N6		&kp EXCLAMATION
+&sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&kp AMPERSAND	&kp N1		&kp N2		&kp N3		&kp PLUS
+&kp ENTER	&none		&none		&kp CARET	&kp C_MUTE	&kp PERCENT	&kp N7		&kp N8		&kp N9		&kp TILDE
 				&kp LEFT	&trans		&kp RIGHT	&kp N0		&trans		&trans
 			>;
 		};
