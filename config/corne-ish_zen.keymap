@@ -197,18 +197,19 @@ THUMB_ROW
 		// However, I'm making a special exception for - and = since
 		// they are frequent in code and only really used for zoom.
 		// $ is here for one reason: JS template literals.
+		// Note that the angle brackets correctly align with , and .
 		a_layer {
 			label = "A";
 // ,-----------------------------.   ,-----------------------------.
-// |  `  |  ?  | WRD | BSP |  @  |   |  #  |  =  |  <  |  >  |  "  |
+// |  `  |  ?  | WRD | BSP |  @  |   |  #  |  -  |  :  |  ;  |  "  |
 // | LFT | DWN | UP  | RGH | TAB |   | ESC |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// | ENT |  {--}--(--)--[--]--\  |   |  *  |  -  |  :  |  ;  |  $  |
+// | ENT |  {--}--(--)--[--]--\  |   |  *  |  =  |  <  |  >  |  $  |
 // `-----------|     |  _  | SPC |   | XXX |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp GRAVE	&kp QUESTION	&kp LA(BSPC)	&kp BSPC	&kp AT_SIGN	&kp HASH	&kp EQUAL	&kp LT		&kp GT		&kp DOUBLE_QUOTES
+&kp GRAVE	&kp QUESTION	&kp LA(BSPC)	&kp BSPC	&kp AT_SIGN	&kp HASH	&kp MINUS	&kp CLMK_COLON	&kp CLMK_SEMI	&kp DOUBLE_QUOTES
 &kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp TAB		&kp ESC		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&kp ENTER	&kp LBRC	&kp LPAR	&kp LBKT	&kp BACKSLASH	&kp ASTERISK	&kp MINUS	&kp CLMK_COLON	&kp CLMK_SEMI	&kp DOLLAR
+&kp ENTER	&kp LBRC	&kp LPAR	&kp LBKT	&kp BACKSLASH	&kp ASTERISK	&kp EQUAL	&kp LT		&kp GT		&kp DOLLAR
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
 		};
