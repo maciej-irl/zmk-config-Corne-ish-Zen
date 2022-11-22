@@ -47,6 +47,10 @@
 		compatible = "zmk,combos";
 		// Ctrl-c
 		COMBO(ctrl_c, 	BASE_LAYERS, 21 22, &kp LC(C));
+		// Esc
+		COMBO(esc, 	BASE_LAYERS L_A L_B, 1 2, &kp ESC);
+		// Word backspace
+		COMBO(alt_bspc, BASE_LAYERS L_A L_B, 2 3, &kp LA(BSPC));
 		// Closing brackets
 		COMBO(rbrc, 	L_A, 21 22, &kp RBRC);
 		COMBO(rpar, 	L_A, 22 23, &kp RPAR);
@@ -157,7 +161,7 @@
 		default_layer {
 			label = "BASE";
 // ,-----------------------------.   ,-----------------------------.
-// |  Q  |  W  |  E  |  R  |  R  |   |  Y  |  U  |  I  |  O  |  '  |
+// |  Q  |  W-ESC-E  |  R  |  R  |   |  Y  |  U  |  I  |  O  |  '  |
 // |  A  |  S  |  D  |  F  |  D  |   |  H  |  J  |  K  |  L  |  ;  |
 // |  Z  |  X-CTC-C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |
 // `-----------| fun |  a  | SPC |   |  b  | SFT | DIS |-----------'
@@ -194,22 +198,20 @@ THUMB_ROW
 		// Base qwerty special characters should go on the left here.
 		// This way any non-numeric macOS shortcut can be typed with
 		// either base layer or this layer. Namely: \ [ ] = - `
-		// However, I'm making a special exception for - and = since
-		// they are frequent in code and only really used for zoom.
 		// $ is here for one reason: JS template literals.
 		// Note that the angle brackets correctly align with , and .
 		a_layer {
 			label = "A";
 // ,-----------------------------.   ,-----------------------------.
-// |  `  |  ?  | WRD | BSP |  @  |   |  #  |  -  |  :  |  ;  |  "  |
+// |  `  | - -ESC-=-WRD-BSP|  $  |   |  #  |  ?  |  :  |  ;  |  @  |
 // | LFT | DWN | UP  | RGH | TAB |   | ESC |  ⌘  |  ⇧  |  ⌃  |  ⎇  |
-// | ENT |  {--}--(--)--[--]--\  |   |  *  |  =  |  <  |  >  |  $  |
+// | ENT |  { -}- ( -)- [ -]- \  |   |  *  |  "  |  <  |  >  |  ~  |
 // `-----------|     |  _  | SPC |   | XXX |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp GRAVE	&kp QUESTION	&kp LA(BSPC)	&kp BSPC	&kp AT_SIGN	&kp HASH	&kp MINUS	&kp CLMK_COLON	&kp CLMK_SEMI	&kp DOUBLE_QUOTES
+&kp GRAVE	&kp MINUS	&kp EQUAL	&kp BSPC	&kp DOLLAR	&kp HASH	&kp QUESTION	&kp CLMK_COLON	&kp CLMK_SEMI	&kp AT_SIGN
 &kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp TAB		&kp ESC		&sk LCMD	&sk LSHIFT	&sk LCTRL	&sk LALT
-&kp ENTER	&kp LBRC	&kp LPAR	&kp LBKT	&kp BACKSLASH	&kp ASTERISK	&kp EQUAL	&kp LT		&kp GT		&kp DOLLAR
+&kp ENTER	&kp LBRC	&kp LPAR	&kp LBKT	&kp BACKSLASH	&kp ASTERISK	&kp DQT		&kp LT		&kp GT		&kp TILDE
 				&trans		&kp UNDERSCORE	&trans		&trans		&trans		&trans
 			>;
 		};
@@ -223,15 +225,15 @@ THUMB_ROW
 		b_layer {
 			label = "B";
 // ,-----------------------------.   ,-----------------------------.
-// | LCK | PRV | PLY | NXT | VUP |   |  |  |  4  |  5  |  6  |  !  |
-// |  ⎇  |  ⌃  |  ⇧  |  ⌘  | VDW |   |  &  |  1  |  2  |  3  |  +  |
-// | ENT |     |     |  ^  | MUT |   |  %  |  7  |  8  |  9  |  ~  |
+// | PRV|PLY-ESC-NXT-WRD-BSP| ^  |   |  &  |  4  |  5  |  6  |  !  |
+// |  ⎇  |  ⌃  |  ⇧  |  ⌘  | TAB |   | ESC |  1  |  2  |  3  |  +  |
+// | ENT | VDW | VUP | MUT |     |   |  |  |  7  |  8  |  9  |  %  |
 // `-----------| LFT | XXX | RGH |   |  0  |     |     |-----------'
 //             `-----------------'   `-----------------'
 			bindings = <
-&kp LG(LC(Q))	&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp C_VOL_UP	&kp PIPE	&kp N4		&kp N5		&kp N6		&kp EXCLAMATION
-&sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp C_VOL_DN	&kp AMPERSAND	&kp N1		&kp N2		&kp N3		&kp PLUS
-&kp ENTER	&none		&none		&kp CARET	&kp C_MUTE	&kp PERCENT	&kp N7		&kp N8		&kp N9		&kp TILDE
+&kp C_PREV	&kp C_PP	&kp C_NEXT	&kp BSPC	&kp CARET	&kp AMPERSAND	&kp N4		&kp N5		&kp N6		&kp EXCLAMATION
+&sk LALT	&sk LCTRL	&sk LSHIFT	&sk LCMD	&kp TAB		&kp ESC		&kp N1		&kp N2		&kp N3		&kp PLUS
+&kp ENTER	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_MUTE	&none		&kp PIPE	&kp N7		&kp N8		&kp N9		&kp PERCENT
 				&kp LEFT	&trans		&kp RIGHT	&kp N0		&trans		&trans
 			>;
 		};
@@ -241,8 +243,8 @@ THUMB_ROW
 		fun_layer {
 			label = "FUN";
 // ,-----------------------------.   ,-----------------------------.
-// | BOG | F4  | F5  | F6  | F10 |   | BT0 | BT1 | BT2 | BT3 | BT4 |
-// | CDH | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
+// | CDH | F4  | F5  | F6  | F10 |   | BT0 | BT1 | BT2 | BT3 | BT4 |
+// |     | F1  | F2  | F3  | F11 |   |     |     |     |     |     |
 // |     | F7  | F8  | F9  | F12 |   | BTC |     |     |     |     |
 // `-----------| XXX |     |     |   |     |     |     |-----------'
 //             `-----------------'   `-----------------'
