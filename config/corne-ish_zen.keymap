@@ -146,7 +146,7 @@ THUMB_ROW
 			bindings = <
 &kp GRAVE	&kp MINUS	&kp EQUAL	&kp BSPC	&none		&kp ASTERISK	&kp LPAR	&kp RPAR	&kp EXCLAMATION	&kp AT_SIGN
 &kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp TAB		&kp ESC		&sk LCMD	&sk LSHIFT	&sk LALT	&sk LCTRL
-&kp ENTER	&kp CLMK_SEMI	&kp LBKT	&kp RBKT	&kp BACKSLASH	&kp HASH	&kp DQT		&kp PERCENT	&kp GT		&kp AMPERSAND
+&kp ENTER	&kp CLMK_SEMI	&kp LBKT	&kp RBKT	&kp BACKSLASH	&kp HASH	&kp DOLLAR	&kp PERCENT	&kp CARET	&kp AMPERSAND
 				&trans		&trans		&trans		&trans		&trans		&trans
 			>;
 		};
