@@ -94,7 +94,7 @@
 &kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp CLMK_O
 &kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp SLASH
 #define THUMB_ROW \
-				&sl L_FUN	&sl L_B		&kp SPACE	&sl L_A		&kp LSHIFT  	&none
+				&sl L_FUN	&sl L_B		&kp SPACE	&sl L_A		&skq LSHIFT  	&none
 THUMB_ROW
 			>;
 		};
